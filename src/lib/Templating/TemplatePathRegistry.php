@@ -7,7 +7,7 @@
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 
-namespace EzSystems\EzPlatformDesignEngine\Templating;
+namespace Ibexa\DesignEngine\Templating;
 
 use Serializable;
 
@@ -50,3 +50,5 @@ class TemplatePathRegistry implements TemplatePathRegistryInterface, Serializabl
         list($this->pathMap, $this->kernelRootDir) = unserialize($serialized);
     }
 }
+
+class_alias(TemplatePathRegistry::class, 'EzSystems\EzPlatformDesignEngine\Templating\TemplatePathRegistry');

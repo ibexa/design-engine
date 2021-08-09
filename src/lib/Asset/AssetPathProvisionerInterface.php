@@ -7,7 +7,7 @@
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 
-namespace EzSystems\EzPlatformDesignEngine\Asset;
+namespace Ibexa\DesignEngine\Asset;
 
 interface AssetPathProvisionerInterface
 {
@@ -22,3 +22,5 @@ interface AssetPathProvisionerInterface
      */
     public function provisionResolvedPaths(array $assetsPaths, $design);
 }
+
+class_alias(AssetPathProvisionerInterface::class, 'EzSystems\EzPlatformDesignEngine\Asset\AssetPathProvisionerInterface');

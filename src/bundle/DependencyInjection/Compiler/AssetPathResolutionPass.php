@@ -7,9 +7,9 @@
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 
-namespace EzSystems\EzPlatformDesignEngineBundle\DependencyInjection\Compiler;
+namespace Ibexa\Bundle\DesignEngine\DependencyInjection\Compiler;
 
-use EzSystems\EzPlatformDesignEngine\Asset\AssetPathProvisionerInterface;
+use Ibexa\DesignEngine\Asset\AssetPathProvisionerInterface;
 use Symfony\Component\DependencyInjection\Alias;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -50,3 +50,5 @@ class AssetPathResolutionPass implements CompilerPassInterface
         return $resolvedPathsByDesign;
     }
 }
+
+class_alias(AssetPathResolutionPass::class, 'EzSystems\EzPlatformDesignEngineBundle\DependencyInjection\Compiler\AssetPathResolutionPass');

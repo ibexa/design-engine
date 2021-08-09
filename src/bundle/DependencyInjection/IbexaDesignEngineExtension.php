@@ -7,7 +7,7 @@
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 
-namespace EzSystems\EzPlatformDesignEngineBundle\DependencyInjection;
+namespace Ibexa\Bundle\DesignEngine\DependencyInjection;
 
 use eZ\Bundle\EzPublishCoreBundle\DependencyInjection\Configuration\SiteAccessAware\ConfigurationProcessor;
 use Symfony\Component\Config\FileLocator;
@@ -15,7 +15,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
-class EzPlatformDesignEngineExtension extends Extension
+class IbexaDesignEngineExtension extends Extension
 {
     public function getAlias()
     {
@@ -54,3 +54,5 @@ class EzPlatformDesignEngineExtension extends Extension
         $container->setParameter('ezdesign.phpstorm.twig_config_path', $config['phpstorm']['twig_config_path']);
     }
 }
+
+class_alias(IbexaDesignEngineExtension::class, 'EzSystems\EzPlatformDesignEngineBundle\DependencyInjection\EzPlatformDesignEngineExtension');

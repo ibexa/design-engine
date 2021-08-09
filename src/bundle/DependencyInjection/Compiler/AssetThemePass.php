@@ -7,7 +7,7 @@
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 
-namespace EzSystems\EzPlatformDesignEngineBundle\DependencyInjection\Compiler;
+namespace Ibexa\Bundle\DesignEngine\DependencyInjection\Compiler;
 
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -88,3 +88,5 @@ class AssetThemePass implements CompilerPassInterface
             ->addMethodCall('addPackage', ['ezdesign', $container->findDefinition('ezdesign.asset_theme_package')]);
     }
 }
+
+class_alias(AssetThemePass::class, 'EzSystems\EzPlatformDesignEngineBundle\DependencyInjection\Compiler\AssetThemePass');

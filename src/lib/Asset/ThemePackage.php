@@ -7,10 +7,10 @@
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 
-namespace EzSystems\EzPlatformDesignEngine\Asset;
+namespace Ibexa\DesignEngine\Asset;
 
-use EzSystems\EzPlatformDesignEngine\DesignAwareInterface;
-use EzSystems\EzPlatformDesignEngine\DesignAwareTrait;
+use Ibexa\DesignEngine\DesignAwareInterface;
+use Ibexa\DesignEngine\DesignAwareTrait;
 use Symfony\Component\Asset\PackageInterface;
 
 class ThemePackage implements PackageInterface, DesignAwareInterface
@@ -43,3 +43,5 @@ class ThemePackage implements PackageInterface, DesignAwareInterface
         return $this->innerPackage->getVersion($this->pathResolver->resolveAssetPath($path, $this->getCurrentDesign()));
     }
 }
+
+class_alias(ThemePackage::class, 'EzSystems\EzPlatformDesignEngine\Asset\ThemePackage');

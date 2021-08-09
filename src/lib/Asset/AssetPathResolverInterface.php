@@ -7,7 +7,7 @@
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 
-namespace EzSystems\EzPlatformDesignEngine\Asset;
+namespace Ibexa\DesignEngine\Asset;
 
 /**
  * Interface for asset path resolvers.
@@ -25,3 +25,5 @@ interface AssetPathResolverInterface
      */
     public function resolveAssetPath($path, $design);
 }
+
+class_alias(AssetPathResolverInterface::class, 'EzSystems\EzPlatformDesignEngine\Asset\AssetPathResolverInterface');

@@ -7,7 +7,7 @@
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 
-namespace EzSystems\EzPlatformDesignEngineBundle\DependencyInjection;
+namespace Ibexa\Bundle\DesignEngine\DependencyInjection;
 
 use eZ\Bundle\EzPublishCoreBundle\DependencyInjection\Configuration\ParserInterface;
 use eZ\Bundle\EzPublishCoreBundle\DependencyInjection\Configuration\SiteAccessAware\ContextualizerInterface;
@@ -39,3 +39,5 @@ class DesignConfigParser implements ParserInterface
             ->end();
     }
 }
+
+class_alias(DesignConfigParser::class, 'EzSystems\EzPlatformDesignEngineBundle\DependencyInjection\DesignConfigParser');

@@ -7,7 +7,7 @@
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 
-namespace EzSystems\EzPlatformDesignEngine\Templating;
+namespace Ibexa\DesignEngine\Templating;
 
 /**
  * Registry to map templates logical names and their real path.
@@ -39,3 +39,5 @@ interface TemplatePathRegistryInterface
      */
     public function getPathMap();
 }
+
+class_alias(TemplatePathRegistryInterface::class, 'EzSystems\EzPlatformDesignEngine\Templating\TemplatePathRegistryInterface');

@@ -7,9 +7,9 @@
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 
-namespace EzSystems\EzPlatformDesignEngine\Asset;
+namespace Ibexa\DesignEngine\Asset;
 
-use EzSystems\EzPlatformDesignEngine\Exception\InvalidDesignException;
+use Ibexa\DesignEngine\Exception\InvalidDesignException;
 use Psr\Log\LoggerInterface;
 
 class AssetPathResolver implements AssetPathResolverInterface
@@ -60,3 +60,5 @@ class AssetPathResolver implements AssetPathResolverInterface
         return $path;
     }
 }
+
+class_alias(AssetPathResolver::class, 'EzSystems\EzPlatformDesignEngine\Asset\AssetPathResolver');

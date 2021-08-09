@@ -7,7 +7,7 @@
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 
-namespace EzSystems\EzPlatformDesignEngine;
+namespace Ibexa\DesignEngine;
 
 interface DesignAwareInterface
 {
@@ -18,3 +18,5 @@ interface DesignAwareInterface
      */
     public function getCurrentDesign();
 }
+
+class_alias(DesignAwareInterface::class, 'EzSystems\EzPlatformDesignEngine\DesignAwareInterface');

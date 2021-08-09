@@ -7,19 +7,19 @@
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 
-namespace EzSystems\EzPlatformDesignEngineBundle;
+namespace Ibexa\Bundle\DesignEngine;
 
-use EzSystems\EzPlatformDesignEngineBundle\DependencyInjection\Compiler\AssetPathResolutionPass;
-use EzSystems\EzPlatformDesignEngineBundle\DependencyInjection\Compiler\AssetThemePass;
-use EzSystems\EzPlatformDesignEngineBundle\DependencyInjection\Compiler\PHPStormPass;
-use EzSystems\EzPlatformDesignEngineBundle\DependencyInjection\Compiler\TwigThemePass;
-use EzSystems\EzPlatformDesignEngineBundle\DependencyInjection\DesignConfigParser;
-use EzSystems\EzPlatformDesignEngineBundle\DependencyInjection\EzPlatformDesignEngineExtension;
+use Ibexa\Bundle\DesignEngine\DependencyInjection\Compiler\AssetPathResolutionPass;
+use Ibexa\Bundle\DesignEngine\DependencyInjection\Compiler\AssetThemePass;
+use Ibexa\Bundle\DesignEngine\DependencyInjection\Compiler\PHPStormPass;
+use Ibexa\Bundle\DesignEngine\DependencyInjection\Compiler\TwigThemePass;
+use Ibexa\Bundle\DesignEngine\DependencyInjection\DesignConfigParser;
+use Ibexa\Bundle\DesignEngine\DependencyInjection\IbexaDesignEngineExtension;
 use Symfony\Component\DependencyInjection\Compiler\PassConfig;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class EzPlatformDesignEngineBundle extends Bundle
+class IbexaDesignEngineBundle extends Bundle
 {
     public function build(ContainerBuilder $container)
     {
@@ -45,3 +45,5 @@ class EzPlatformDesignEngineBundle extends Bundle
         return $this->extension;
     }
 }
+
+class_alias(IbexaDesignEngineBundle::class, 'EzSystems\EzPlatformDesignEngineBundle\EzPlatformDesignEngineBundle');

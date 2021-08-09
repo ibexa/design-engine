@@ -7,7 +7,7 @@
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 
-namespace EzSystems\EzPlatformDesignEngine;
+namespace Ibexa\DesignEngine;
 
 use eZ\Publish\Core\MVC\ConfigResolverInterface;
 
@@ -33,3 +33,5 @@ trait DesignAwareTrait
         return $this->configResolver->getParameter('design');
     }
 }
+
+class_alias(DesignAwareTrait::class, 'EzSystems\EzPlatformDesignEngine\DesignAwareTrait');

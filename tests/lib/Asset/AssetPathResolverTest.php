@@ -7,10 +7,10 @@
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 
-namespace EzSystems\EzPlatformDesignEngine\Tests\Asset;
+namespace Ibexa\Tests\DesignEngine\Asset;
 
-use EzSystems\EzPlatformDesignEngine\Asset\AssetPathResolver;
-use EzSystems\EzPlatformDesignEngine\Exception\InvalidDesignException;
+use Ibexa\DesignEngine\Asset\AssetPathResolver;
+use Ibexa\DesignEngine\Exception\InvalidDesignException;
 use org\bovigo\vfs\vfsStream;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
@@ -134,3 +134,5 @@ class AssetPathResolverTest extends TestCase
         self::assertSame($resolvedPath, $resolver->resolveAssetPath($path, 'foo'));
     }
 }
+
+class_alias(AssetPathResolverTest::class, 'EzSystems\EzPlatformDesignEngine\Tests\Asset\AssetPathResolverTest');

@@ -7,9 +7,9 @@
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 
-namespace EzSystems\EzPlatformDesignEngineBundle\DependencyInjection\Compiler;
+namespace Ibexa\Bundle\DesignEngine\DependencyInjection\Compiler;
 
-use EzSystems\EzPlatformDesignEngineBundle\DataCollector\TwigDataCollector;
+use Ibexa\Bundle\DesignEngine\DataCollector\TwigDataCollector;
 use ReflectionClass;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -110,3 +110,5 @@ class TwigThemePass implements CompilerPassInterface
         $twigDataCollector->addArgument(new Reference('ezdesign.template_path_registry'));
     }
 }
+
+class_alias(TwigThemePass::class, 'EzSystems\EzPlatformDesignEngineBundle\DependencyInjection\Compiler\TwigThemePass');

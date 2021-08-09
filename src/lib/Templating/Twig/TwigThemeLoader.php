@@ -7,10 +7,10 @@
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 
-namespace EzSystems\EzPlatformDesignEngine\Templating\Twig;
+namespace Ibexa\DesignEngine\Templating\Twig;
 
-use EzSystems\EzPlatformDesignEngine\Templating\TemplateNameResolverInterface;
-use EzSystems\EzPlatformDesignEngine\Templating\TemplatePathRegistryInterface;
+use Ibexa\DesignEngine\Templating\TemplateNameResolverInterface;
+use Ibexa\DesignEngine\Templating\TemplatePathRegistryInterface;
 use Twig\Loader\FilesystemLoader;
 use Twig\Loader\LoaderInterface;
 use Twig\Source;
@@ -99,3 +99,5 @@ class TwigThemeLoader implements LoaderInterface
         $this->innerFilesystemLoader->prependPath($path, $namespace);
     }
 }
+
+class_alias(TwigThemeLoader::class, 'EzSystems\EzPlatformDesignEngine\Templating\Twig\TwigThemeLoader');

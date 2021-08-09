@@ -7,7 +7,7 @@
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 
-namespace EzSystems\EzPlatformDesignEngine\Templating;
+namespace Ibexa\DesignEngine\Templating;
 
 /**
  * Interface for template name resolvers.
@@ -35,3 +35,5 @@ interface TemplateNameResolverInterface
      */
     public function isTemplateDesignNamespaced($name);
 }
+
+class_alias(TemplateNameResolverInterface::class, 'EzSystems\EzPlatformDesignEngine\Templating\TemplateNameResolverInterface');

@@ -7,9 +7,9 @@
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 
-namespace EzSystems\EzPlatformDesignEngineBundle\DataCollector;
+namespace Ibexa\Bundle\DesignEngine\DataCollector;
 
-use EzSystems\EzPlatformDesignEngine\Templating\TemplatePathRegistryInterface;
+use Ibexa\DesignEngine\Templating\TemplatePathRegistryInterface;
 use Symfony\Bridge\Twig\DataCollector\TwigDataCollector as BaseCollector;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -93,3 +93,5 @@ class TwigDataCollector extends BaseCollector implements LateDataCollectorInterf
         return $profile;
     }
 }
+
+class_alias(TwigDataCollector::class, 'EzSystems\EzPlatformDesignEngineBundle\DataCollector\TwigDataCollector');

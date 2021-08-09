@@ -7,7 +7,7 @@
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 
-namespace EzSystems\EzPlatformDesignEngineBundle\DependencyInjection\Compiler;
+namespace Ibexa\Bundle\DesignEngine\DependencyInjection\Compiler;
 
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -62,3 +62,5 @@ class PHPStormPass implements CompilerPassInterface
         return trim(str_replace($configPath, '', $path), '/');
     }
 }
+
+class_alias(PHPStormPass::class, 'EzSystems\EzPlatformDesignEngineBundle\DependencyInjection\Compiler\PHPStormPass');

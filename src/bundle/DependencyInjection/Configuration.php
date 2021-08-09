@@ -7,7 +7,7 @@
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 
-namespace EzSystems\EzPlatformDesignEngineBundle\DependencyInjection;
+namespace Ibexa\Bundle\DesignEngine\DependencyInjection;
 
 use eZ\Bundle\EzPublishCoreBundle\DependencyInjection\Configuration\SiteAccessAware\Configuration as SiteAccessConfiguration;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
@@ -61,3 +61,5 @@ class Configuration extends SiteAccessConfiguration
         return $treeBuilder;
     }
 }
+
+class_alias(Configuration::class, 'EzSystems\EzPlatformDesignEngineBundle\DependencyInjection\Configuration');

@@ -7,7 +7,7 @@
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 
-namespace EzSystems\EzPlatformDesignEngine\Templating;
+namespace Ibexa\DesignEngine\Templating;
 
 use eZ\Publish\Core\MVC\ConfigResolverInterface;
 
@@ -56,3 +56,5 @@ class ThemeTemplateNameResolver implements TemplateNameResolverInterface
         return (strpos($name, '@' . self::EZ_DESIGN_NAMESPACE) !== false) || (strpos($name, '@' . $this->getCurrentDesign()) !== false);
     }
 }
+
+class_alias(ThemeTemplateNameResolver::class, 'EzSystems\EzPlatformDesignEngine\Templating\ThemeTemplateNameResolver');

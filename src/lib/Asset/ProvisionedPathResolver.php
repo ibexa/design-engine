@@ -7,7 +7,7 @@
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 
-namespace EzSystems\EzPlatformDesignEngine\Asset;
+namespace Ibexa\DesignEngine\Asset;
 
 use Symfony\Component\Finder\Finder;
 
@@ -93,3 +93,5 @@ class ProvisionedPathResolver implements AssetPathResolverInterface, AssetPathPr
         return $logicalPaths;
     }
 }
+
+class_alias(ProvisionedPathResolver::class, 'EzSystems\EzPlatformDesignEngine\Asset\ProvisionedPathResolver');
