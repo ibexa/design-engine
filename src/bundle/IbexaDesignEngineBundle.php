@@ -39,7 +39,7 @@ class IbexaDesignEngineBundle extends Bundle
     public function getContainerExtension()
     {
         if (!isset($this->extension)) {
-            $this->extension = new EzPlatformDesignEngineExtension();
+            $this->extension = new IbexaDesignEngineExtension();
         }
 
         return $this->extension;
