@@ -11,15 +11,15 @@ parameters:
 
 services:
     ezdesign.template_name_resolver:
-        class: EzSystems\EzPlatformDesignEngine\Templating\ThemeTemplateNameResolver
+        class: Ibexa\DesignEngine\Templating\ThemeTemplateNameResolver
         arguments: ["@ezpublish.config.resolver"]
 
     ezdesign.template_path_registry:
-        class: EzSystems\EzPlatformDesignEngine\Templating\TemplatePathRegistry
+        class: Ibexa\DesignEngine\Templating\TemplatePathRegistry
         arguments: ["%kernel.project_dir%"]
 
     ezdesign.twig_theme_loader:
-        class: EzSystems\EzPlatformDesignEngine\Templating\Twig\TwigThemeLoader
+        class: Ibexa\DesignEngine\Templating\Twig\TwigThemeLoader
         public: false
         decorates: twig.loader.native_filesystem
         arguments:
@@ -28,14 +28,14 @@ services:
             - "@ezdesign.twig_theme_loader.inner"
 
     ezdesign.asset_path_resolver.runtime:
-        class: EzSystems\EzPlatformDesignEngine\Asset\AssetPathResolver
+        class: Ibexa\DesignEngine\Asset\AssetPathResolver
         arguments:
             - "%ezdesign.assets_path_map%"
             - "%webroot_dir%"
         public: false
 
     ezdesign.asset_path_resolver.provisioned:
-        class: EzSystems\EzPlatformDesignEngine\Asset\ProvisionedPathResolver
+        class: Ibexa\DesignEngine\Asset\ProvisionedPathResolver
         arguments:
             - '%ezdesign.asset_resolved_paths%'
             - '@ezdesign.asset_path_resolver.runtime'
@@ -46,7 +46,7 @@ services:
         alias: ezdesign.asset_path_resolver.runtime
 
     ezdesign.asset_theme_package:
-        class: EzSystems\EzPlatformDesignEngine\Asset\ThemePackage
+        class: Ibexa\DesignEngine\Asset\ThemePackage
         arguments:
             - "@ezdesign.asset_path_resolver"
             - "@assets._default_package"
