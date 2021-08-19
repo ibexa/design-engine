@@ -1,0 +1,64 @@
+<?php
+
+/*
+ * This file is part of the EzPlatformDesignEngine package.
+ *
+ * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+ * @license For full copyright and license information view LICENSE file distributed with this source code.
+ */
+
+namespace Ibexa\DesignEngine\Asset;
+
+use Ibexa\DesignEngine\Exception\InvalidDesignException;
+use Psr\Log\LoggerInterface;
+
+class AssetPathResolver implements AssetPathResolverInterface
+{
+    /**
+     * @var array
+     */
+    private $designPaths;
+
+    /**
+     * @var string
+     */
+    private $webRootDir;
+
+    /**
+     * @var LoggerInterface
+     */
+    private $logger;
+
+    public function __construct(array $designPaths, $webRootDir, LoggerInterface $logger = null)
+    {
+        $this->designPaths = $designPaths;
+        $this->webRootDir = $webRootDir;
+        $this->logger = $logger;
+    }
+
+    public function resolveAssetPath($path, $design)
+    {
+        if (!isset($this->designPaths[$design])) {
+            throw new InvalidDesignException("Invalid design '$design'");
+        }
+
+        foreach ($this->designPaths[$design] as $tryPath) {
+            if (file_exists($this->webRootDir . '/' . $tryPath . '/' . $path)) {
+                return $tryPath . '/' . $path;
+            }
+        }
+
+        if ($this->logger) {
+            $this->logger->warning(
+                "Asset '$path' cannot be found in any configured themes.\nTried directories: " . implode(
+                    ', ',
+                    array_values($this->designPaths[$design])
+                )
+            );
+        }
+
+        return $path;
+    }
+}
+
+class_alias(AssetPathResolver::class, 'EzSystems\EzPlatformDesignEngine\Asset\AssetPathResolver');

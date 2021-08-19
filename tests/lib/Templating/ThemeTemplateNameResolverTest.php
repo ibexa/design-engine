@@ -7,10 +7,10 @@
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 
-namespace EzSystems\EzPlatformDesignEngine\Tests\Templating;
+namespace Ibexa\Tests\DesignEngine\Templating;
 
 use eZ\Publish\Core\MVC\ConfigResolverInterface;
-use EzSystems\EzPlatformDesignEngine\Templating\ThemeTemplateNameResolver;
+use Ibexa\DesignEngine\Templating\ThemeTemplateNameResolver;
 use PHPUnit\Framework\TestCase;
 
 class ThemeTemplateNameResolverTest extends TestCase
@@ -72,3 +72,5 @@ class ThemeTemplateNameResolverTest extends TestCase
         self::assertSame($expected, $resolver->isTemplateDesignNamespaced($templateName));
     }
 }
+
+class_alias(ThemeTemplateNameResolverTest::class, 'EzSystems\EzPlatformDesignEngine\Tests\Templating\ThemeTemplateNameResolverTest');

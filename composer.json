@@ -1,8 +1,11 @@
 {
-    "name": "ezsystems/ezplatform-design-engine",
-    "description": "Design fallback mechanism for eZ Platform",
+    "name": "ibexa/design-engine",
+    "description": "Design fallback mechanism for Ibexa",
     "license": "GPL-2.0-only",
-    "type": "ezplatform-bundle",
+    "type": "ibexa-bundle",
+    "replace": {
+        "ezsystems/ezplatform-design-engine:": "*"
+    },
     "authors": [
         {
             "name": "Jerome Vieilledent",
@@ -34,13 +37,18 @@
     "autoload": {
         "psr-4": {
             "EzSystems\\EzPlatformDesignEngine\\": "lib",
-            "EzSystems\\EzPlatformDesignEngineBundle\\": "bundle"
+            "EzSystems\\EzPlatformDesignEngineBundle\\": "bundle",
+            "Ibexa\\DesignEngine\\": "src/lib/",
+            "Ibexa\\Bundle\\DesignEngine\\": "src/bundle/",
+            "Ibexa\\Contracts\\DesignEngine\\": "src/contracts/"
         }
     },
     "autoload-dev": {
         "psr-4": {
             "EzSystems\\EzPlatformDesignEngine\\Tests\\": "tests/lib",
-            "EzSystems\\EzPlatformDesignEngineBundle\\Tests\\": "tests/bundle"
+            "EzSystems\\EzPlatformDesignEngineBundle\\Tests\\": "tests/bundle",
+            "Ibexa\\Tests\\Bundle\\DesignEngine\\": "tests/bundle/",
+            "Ibexa\\Tests\\DesignEngine\\": "tests/lib/"
         }
     },
     "scripts": {
@@ -48,7 +56,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "4.0.x-dev"
+            "dev-main": "4.0.x-dev"
         }
     },
     "conflict": {
