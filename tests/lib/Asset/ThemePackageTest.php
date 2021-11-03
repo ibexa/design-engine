@@ -7,11 +7,11 @@
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 
-namespace EzSystems\EzPlatformDesignEngine\Tests\Asset;
+namespace Ibexa\Tests\DesignEngine\Asset;
 
 use eZ\Publish\Core\MVC\ConfigResolverInterface;
-use EzSystems\EzPlatformDesignEngine\Asset\AssetPathResolverInterface;
-use EzSystems\EzPlatformDesignEngine\Asset\ThemePackage;
+use Ibexa\DesignEngine\Asset\AssetPathResolverInterface;
+use Ibexa\DesignEngine\Asset\ThemePackage;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Asset\PackageInterface;
 
@@ -94,3 +94,5 @@ class ThemePackageTest extends TestCase
         self::assertSame($version, $package->getVersion($assetPath));
     }
 }
+
+class_alias(ThemePackageTest::class, 'EzSystems\EzPlatformDesignEngine\Tests\Asset\ThemePackageTest');
