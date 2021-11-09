@@ -4,7 +4,7 @@
     "license": "GPL-2.0-only",
     "type": "ibexa-bundle",
     "replace": {
-        "ezsystems/ezplatform-design-engine:": "*"
+        "ezsystems/ezplatform-design-engine": "*"
     },
     "authors": [
         {
