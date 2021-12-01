@@ -6,7 +6,6 @@
  * @copyright Copyright (C) eZ Systems AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
-
 namespace Ibexa\Bundle\DesignEngine\DataCollector;
 
 use Ibexa\DesignEngine\Templating\TemplatePathRegistryInterface;
@@ -20,7 +19,7 @@ use Twig\Profiler\Profile;
 class TwigDataCollector extends BaseCollector implements LateDataCollectorInterface
 {
     /**
-     * @var TemplatePathRegistryInterface
+     * @var \Ibexa\DesignEngine\Templating\TemplatePathRegistryInterface
      */
     private $templatePathRegistry;
 

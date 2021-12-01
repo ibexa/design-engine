@@ -6,7 +6,6 @@
  * @copyright Copyright (C) eZ Systems AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
-
 namespace Ibexa\DesignEngine\Asset;
 
 use Ibexa\DesignEngine\DesignAwareInterface;
@@ -23,7 +22,7 @@ class ThemePackage implements PackageInterface, DesignAwareInterface
     private $pathResolver;
 
     /**
-     * @var PackageInterface
+     * @var \Symfony\Component\Asset\PackageInterface
      */
     private $innerPackage;
 

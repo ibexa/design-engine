@@ -6,7 +6,6 @@
  * @copyright Copyright (C) eZ Systems AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
-
 namespace Ibexa\DesignEngine\Asset;
 
 use Ibexa\DesignEngine\Exception\InvalidDesignException;
@@ -25,7 +24,7 @@ class AssetPathResolver implements AssetPathResolverInterface
     private $webRootDir;
 
     /**
-     * @var LoggerInterface
+     * @var \Psr\Log\LoggerInterface
      */
     private $logger;
 
