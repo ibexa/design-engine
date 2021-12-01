@@ -17,9 +17,11 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
 class IbexaDesignEngineExtension extends Extension
 {
+    public const EXTENSION_NAME = 'ibexa_design_engine';
+
     public function getAlias()
     {
-        return 'ezdesign';
+        return self::EXTENSION_NAME;
     }
 
     public function getConfiguration(array $config, ContainerBuilder $container)
