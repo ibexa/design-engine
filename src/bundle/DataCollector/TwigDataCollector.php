@@ -20,7 +20,7 @@ use Twig\Profiler\Profile;
 class TwigDataCollector extends BaseCollector implements LateDataCollectorInterface
 {
     /**
-     * @var TemplatePathRegistryInterface
+     * @var \Ibexa\DesignEngine\Templating\TemplatePathRegistryInterface
      */
     private $templatePathRegistry;
 

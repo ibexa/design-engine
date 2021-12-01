@@ -9,12 +9,12 @@
 
 namespace Ibexa\DesignEngine;
 
-use eZ\Publish\Core\MVC\ConfigResolverInterface;
+use Ibexa\Core\MVC\ConfigResolverInterface;
 
 trait DesignAwareTrait
 {
     /**
-     * @var ConfigResolverInterface
+     * @var \Ibexa\Core\MVC\ConfigResolverInterface
      */
     private $configResolver;
 

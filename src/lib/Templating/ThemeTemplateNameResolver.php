@@ -9,12 +9,12 @@
 
 namespace Ibexa\DesignEngine\Templating;
 
-use eZ\Publish\Core\MVC\ConfigResolverInterface;
+use Ibexa\Core\MVC\ConfigResolverInterface;
 
 class ThemeTemplateNameResolver implements TemplateNameResolverInterface
 {
     /**
-     * @var ConfigResolverInterface
+     * @var \Ibexa\Core\MVC\ConfigResolverInterface
      */
     private $configResolver;
 

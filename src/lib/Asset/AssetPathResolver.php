@@ -25,7 +25,7 @@ class AssetPathResolver implements AssetPathResolverInterface
     private $webRootDir;
 
     /**
-     * @var LoggerInterface
+     * @var \Psr\Log\LoggerInterface
      */
     private $logger;
 

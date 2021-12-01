@@ -22,17 +22,17 @@ use Twig\Source;
 class TwigThemeLoader implements LoaderInterface
 {
     /**
-     * @var TemplateNameResolverInterface
+     * @var \Ibexa\DesignEngine\Templating\TemplateNameResolverInterface
      */
     private $nameResolver;
 
     /**
-     * @var TemplatePathRegistryInterface
+     * @var \Ibexa\DesignEngine\Templating\TemplatePathRegistryInterface
      */
     private $pathRegistry;
 
     /**
-     * @var FilesystemLoader
+     * @var \Twig\Loader\FilesystemLoader
      */
     private $innerFilesystemLoader;
 

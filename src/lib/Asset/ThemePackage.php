@@ -23,7 +23,7 @@ class ThemePackage implements PackageInterface, DesignAwareInterface
     private $pathResolver;
 
     /**
-     * @var PackageInterface
+     * @var \Symfony\Component\Asset\PackageInterface
      */
     private $innerPackage;
 

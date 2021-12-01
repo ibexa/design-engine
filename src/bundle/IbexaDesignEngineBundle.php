@@ -25,8 +25,8 @@ class IbexaDesignEngineBundle extends Bundle
     {
         parent::build($container);
 
-        /** @var \eZ\Bundle\EzPublishCoreBundle\DependencyInjection\EzPublishCoreExtension $eZExtension */
-        $eZExtension = $container->getExtension('ezpublish');
+        /** @var \Ibexa\Bundle\Core\DependencyInjection\IbexaCoreExtension $eZExtension */
+        $eZExtension = $container->getExtension('ibexa');
         $eZExtension->addConfigParser(new DesignConfigParser());
         $eZExtension->addDefaultSettings(__DIR__ . '/Resources/config', ['default_settings.yaml']);
 

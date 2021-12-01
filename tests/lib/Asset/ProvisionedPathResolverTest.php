@@ -18,7 +18,7 @@ use PHPUnit\Framework\TestCase;
 class ProvisionedPathResolverTest extends TestCase
 {
     /**
-     * @var \PHPUnit\Framework\MockObject\MockObject|AssetPathResolverInterface
+     * @var \PHPUnit\Framework\MockObject\MockObject|\Ibexa\DesignEngine\Asset\AssetPathResolverInterface
      */
     private $innerResolver;
 
