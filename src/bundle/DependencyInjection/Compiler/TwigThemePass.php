@@ -1,12 +1,9 @@
 <?php
 
-/*
- * This file is part of the EzPlatformDesignEngine package.
- *
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+/**
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
-
 namespace Ibexa\Bundle\DesignEngine\DependencyInjection\Compiler;
 
 use Ibexa\Bundle\DesignEngine\DataCollector\TwigDataCollector;
@@ -91,8 +88,11 @@ class TwigThemePass implements CompilerPassInterface
         }
 
         $themesList = $container->getParameter('ezdesign.themes_list');
-        $container->setParameter('ezdesign.themes_list', array_unique(
-            array_merge($themesList, array_keys($themesPathMap)))
+        $container->setParameter(
+            'ezdesign.themes_list',
+            array_unique(
+            array_merge($themesList, array_keys($themesPathMap))
+        )
         );
         $container->setParameter('ezdesign.templates_path_map', $themesPathMap);
 

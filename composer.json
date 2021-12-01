@@ -29,9 +29,10 @@
         "symfony/templating": "^5.0"
     },
     "require-dev": {
+        "ibexa/code-style": "^1.0",
         "ibexa/doctrine-schema": "^4.0@dev",
         "phpunit/phpunit": "^8.1",
-        "friendsofphp/php-cs-fixer": "~2.15.3",
+        "friendsofphp/php-cs-fixer": "^3.0",
         "mikey179/vfsstream": "^1.6"
     },
     "autoload": {
