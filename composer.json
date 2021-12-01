@@ -29,7 +29,7 @@
         "symfony/templating": "^5.0"
     },
     "require-dev": {
-        "ibexa/doctrine-dbal-schema": "^4.0@dev",
+        "ibexa/doctrine-schema": "^4.0@dev",
         "phpunit/phpunit": "^8.1",
         "friendsofphp/php-cs-fixer": "~2.15.3",
         "mikey179/vfsstream": "^1.6"
