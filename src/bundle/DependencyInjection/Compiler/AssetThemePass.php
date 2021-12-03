@@ -1,12 +1,9 @@
 <?php
 
-/*
- * This file is part of the EzPlatformDesignEngine package.
- *
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+/**
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
-
 namespace Ibexa\Bundle\DesignEngine\DependencyInjection\Compiler;
 
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
@@ -78,8 +75,11 @@ class AssetThemePass implements CompilerPassInterface
         }
 
         $themesList = $container->getParameter('ezdesign.themes_list');
-        $container->setParameter('ezdesign.themes_list', array_unique(
-            array_merge($themesList, array_keys($themesPathMap)))
+        $container->setParameter(
+            'ezdesign.themes_list',
+            array_unique(
+            array_merge($themesList, array_keys($themesPathMap))
+        )
         );
         $container->setParameter('ezdesign.assets_path_map', $pathsByDesign);
         $container->findDefinition('ezdesign.asset_path_resolver')
