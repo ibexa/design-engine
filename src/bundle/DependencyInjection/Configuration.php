@@ -16,7 +16,7 @@ class Configuration extends SiteAccessConfiguration
 {
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder('ezdesign');
+        $treeBuilder = new TreeBuilder(IbexaDesignEngineExtension::EXTENSION_NAME);
 
         $rootNode = $treeBuilder->getRootNode();
         $rootNode
