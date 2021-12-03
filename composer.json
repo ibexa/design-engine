@@ -36,11 +36,11 @@
     },
     "autoload": {
         "psr-4": {
-            "EzSystems\\EzPlatformDesignEngine\\": "lib",
-            "EzSystems\\EzPlatformDesignEngineBundle\\": "bundle",
             "Ibexa\\DesignEngine\\": "src/lib/",
             "Ibexa\\Bundle\\DesignEngine\\": "src/bundle/",
-            "Ibexa\\Contracts\\DesignEngine\\": "src/contracts/"
+            "Ibexa\\Contracts\\DesignEngine\\": "src/contracts/",
+            "EzSystems\\EzPlatformDesignEngine\\": "src/lib/",
+            "EzSystems\\EzPlatformDesignEngineBundle\\": "src/bundle/"
         }
     },
     "autoload-dev": {
