@@ -8,6 +8,8 @@ namespace Ibexa\Contracts\DesignEngine;
 
 interface DesignAwareInterface
 {
+    public const DESIGN_NAMESPACE = 'ibexadesign';
+
     /**
      * Returns current design.
      *
