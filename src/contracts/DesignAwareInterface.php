@@ -10,12 +10,7 @@ interface DesignAwareInterface
 {
     public const DESIGN_NAMESPACE = 'ibexadesign';
 
-    /**
-     * Returns current design.
-     *
-     * @return string
-     */
-    public function getCurrentDesign();
+    public function getCurrentDesign(): string;
 }
 
 class_alias(DesignAwareInterface::class, 'EzSystems\EzPlatformDesignEngine\DesignAwareInterface');

@@ -15,17 +15,12 @@ trait DesignAwareTrait
      */
     private $configResolver;
 
-    public function setConfigResolver(ConfigResolverInterface $configResolver)
+    public function setConfigResolver(ConfigResolverInterface $configResolver): void
     {
         $this->configResolver = $configResolver;
     }
 
-    /**
-     * Returns the current design.
-     *
-     * @return string
-     */
-    public function getCurrentDesign()
+    public function getCurrentDesign(): string
     {
         return $this->configResolver->getParameter('design');
     }
