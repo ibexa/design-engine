@@ -29,11 +29,13 @@ class ThemeTemplateNameResolver implements TemplateNameResolverInterface
     {
         if (!$this->isTemplateDesignNamespaced($name)) {
             return $name;
-        } elseif (isset($this->resolvedTemplateNames[$name])) {
-            return $this->resolvedTemplateNames[$name];
         }
 
-        return $this->resolvedTemplateNames[$name] = str_replace('@' . self::EZ_DESIGN_NAMESPACE, '@' . $this->getCurrentDesign(), $name);
+        return $this->resolvedTemplateNames[$name] ?? ($this->resolvedTemplateNames[$name] = str_replace(
+                '@' . self::EZ_DESIGN_NAMESPACE,
+                '@' . $this->getCurrentDesign(),
+                $name
+            ));
     }
 
     public function isTemplateDesignNamespaced($name)
