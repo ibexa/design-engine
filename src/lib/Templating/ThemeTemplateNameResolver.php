@@ -7,13 +7,11 @@
 namespace Ibexa\DesignEngine\Templating;
 
 use Ibexa\Core\MVC\ConfigResolverInterface;
+use Ibexa\DesignEngine\DesignAwareTrait;
 
 class ThemeTemplateNameResolver implements TemplateNameResolverInterface
 {
-    /**
-     * @var \Ibexa\Core\MVC\ConfigResolverInterface
-     */
-    private $configResolver;
+    use DesignAwareTrait;
 
     /**
      * Collection of already resolved template names.
@@ -24,17 +22,7 @@ class ThemeTemplateNameResolver implements TemplateNameResolverInterface
 
     public function __construct(ConfigResolverInterface $configResolver)
     {
-        $this->configResolver = $configResolver;
-    }
-
-    /**
-     * Returns the name of the current design, in the current context (i.e. SiteAccess).
-     *
-     * @return string
-     */
-    private function getCurrentDesign()
-    {
-        return $this->configResolver->getParameter('design');
+        $this->setConfigResolver($configResolver);
     }
 
     public function resolveTemplateName($name)

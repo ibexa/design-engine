@@ -6,12 +6,18 @@
  */
 namespace Ibexa\DesignEngine\Templating;
 
+use Ibexa\Contracts\DesignEngine\DesignAwareInterface;
+
 /**
  * Interface for template name resolvers.
  * A template name resolver will check provided template name and resolve it for current design.
  */
-interface TemplateNameResolverInterface
+interface TemplateNameResolverInterface extends DesignAwareInterface
 {
+    /**
+     * @deprecated since Ibexa 4.0. Use
+     * {@see \Ibexa\Contracts\DesignEngine\DesignAwareInterface::DESIGN_NAMESPACE} instead.
+     */
     public const EZ_DESIGN_NAMESPACE = 'ezdesign';
 
     /**
