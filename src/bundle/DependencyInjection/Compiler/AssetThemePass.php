@@ -6,6 +6,7 @@
  */
 namespace Ibexa\Bundle\DesignEngine\DependencyInjection\Compiler;
 
+use Ibexa\Contracts\DesignEngine\DesignAwareInterface;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Finder\Finder;
@@ -78,14 +79,14 @@ class AssetThemePass implements CompilerPassInterface
         $container->setParameter(
             'ezdesign.themes_list',
             array_unique(
-            array_merge($themesList, array_keys($themesPathMap))
-        )
+                array_merge($themesList, array_keys($themesPathMap))
+            )
         );
         $container->setParameter('ezdesign.assets_path_map', $pathsByDesign);
         $container->findDefinition('ezdesign.asset_path_resolver')
             ->replaceArgument(0, $pathsByDesign);
         $container->findDefinition('assets.packages')
-            ->addMethodCall('addPackage', ['ezdesign', $container->findDefinition('ezdesign.asset_theme_package')]);
+            ->addMethodCall('addPackage', [DesignAwareInterface::DESIGN_NAMESPACE, $container->findDefinition('ezdesign.asset_theme_package')]);
     }
 }
 
