@@ -32,7 +32,7 @@ class ThemeTemplateNameResolver implements TemplateNameResolverInterface
         }
 
         return $this->resolvedTemplateNames[$name] ?? ($this->resolvedTemplateNames[$name] = str_replace(
-                '@' . self::DESIGN_NAMESPACE,
+                '@' . static::DESIGN_NAMESPACE,
                 '@' . $this->getCurrentDesign(),
                 $name
             ));
@@ -40,7 +40,7 @@ class ThemeTemplateNameResolver implements TemplateNameResolverInterface
 
     public function isTemplateDesignNamespaced($name)
     {
-        return (strpos($name, '@' . self::DESIGN_NAMESPACE) !== false) || (strpos($name, '@' . $this->getCurrentDesign()) !== false);
+        return (strpos($name, '@' . static::DESIGN_NAMESPACE) !== false) || (strpos($name, '@' . $this->getCurrentDesign()) !== false);
     }
 }
 
