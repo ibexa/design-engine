@@ -6,7 +6,7 @@
  */
 namespace Ibexa\DesignEngine\Asset;
 
-use Ibexa\DesignEngine\DesignAwareInterface;
+use Ibexa\Contracts\DesignEngine\DesignAwareInterface;
 use Ibexa\DesignEngine\DesignAwareTrait;
 use Symfony\Component\Asset\PackageInterface;
 
