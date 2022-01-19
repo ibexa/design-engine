@@ -23,7 +23,7 @@ class TwigThemePass implements CompilerPassInterface
 {
     public function process(ContainerBuilder $container)
     {
-        if (!($container->hasParameter('kernel.bundles') && $container->hasDefinition('ezdesign.twig_theme_loader'))) {
+        if (!($container->hasParameter('kernel.bundles') && $container->hasDefinition(\Ibexa\DesignEngine\Templating\Twig\TwigThemeLoader::class))) {
             return;
         }
 
@@ -50,7 +50,7 @@ class TwigThemePass implements CompilerPassInterface
             }
         }
 
-        $twigLoaderDef = $container->findDefinition('ezdesign.twig_theme_loader');
+        $twigLoaderDef = $container->findDefinition(\Ibexa\DesignEngine\Templating\Twig\TwigThemeLoader::class);
         // Now look for themes at application level
         $appLevelThemesDir = $globalViewsDir . '/themes';
         if (is_dir($appLevelThemesDir)) {
@@ -107,7 +107,7 @@ class TwigThemePass implements CompilerPassInterface
             $twigDataCollector->addArgument(new Reference('twig'));
         }
 
-        $twigDataCollector->addArgument(new Reference('ezdesign.template_path_registry'));
+        $twigDataCollector->addArgument(new Reference(\Ibexa\DesignEngine\Templating\TemplatePathRegistry::class));
     }
 }
 

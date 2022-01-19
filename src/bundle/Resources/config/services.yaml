@@ -10,45 +10,45 @@ parameters:
     ezdesign.phpstorm.enabled: true
 
 services:
-    ezdesign.template_name_resolver:
+    Ibexa\DesignEngine\Templating\ThemeTemplateNameResolver:
         class: Ibexa\DesignEngine\Templating\ThemeTemplateNameResolver
-        arguments: ["@ezpublish.config.resolver"]
+        arguments: ['@ibexa.config.resolver']
 
-    ezdesign.template_path_registry:
+    Ibexa\DesignEngine\Templating\TemplatePathRegistry:
         class: Ibexa\DesignEngine\Templating\TemplatePathRegistry
         arguments: ["%kernel.project_dir%"]
 
-    ezdesign.twig_theme_loader:
+    Ibexa\DesignEngine\Templating\Twig\TwigThemeLoader:
         class: Ibexa\DesignEngine\Templating\Twig\TwigThemeLoader
         public: false
         decorates: twig.loader.native_filesystem
         arguments:
-            - "@ezdesign.template_name_resolver"
-            - "@ezdesign.template_path_registry"
-            - "@ezdesign.twig_theme_loader.inner"
+            - '@Ibexa\DesignEngine\Templating\ThemeTemplateNameResolver'
+            - '@Ibexa\DesignEngine\Templating\TemplatePathRegistry'
+            - '@Ibexa\DesignEngine\Templating\Twig\TwigThemeLoader.inner'
 
-    ezdesign.asset_path_resolver.runtime:
+    Ibexa\DesignEngine\Asset\AssetPathResolver:
         class: Ibexa\DesignEngine\Asset\AssetPathResolver
         arguments:
             - "%ezdesign.assets_path_map%"
             - "%webroot_dir%"
         public: false
 
-    ezdesign.asset_path_resolver.provisioned:
+    Ibexa\DesignEngine\Asset\ProvisionedPathResolver:
         class: Ibexa\DesignEngine\Asset\ProvisionedPathResolver
         arguments:
             - '%ezdesign.asset_resolved_paths%'
-            - '@ezdesign.asset_path_resolver.runtime'
+            - '@Ibexa\DesignEngine\Asset\AssetPathResolver'
             - '%webroot_dir%'
         public: false
 
-    ezdesign.asset_path_resolver:
-        alias: ezdesign.asset_path_resolver.runtime
+    ibexadesign.asset_path_resolver:
+        alias: Ibexa\DesignEngine\Asset\AssetPathResolver
 
-    ezdesign.asset_theme_package:
+    Ibexa\DesignEngine\Asset\ThemePackage:
         class: Ibexa\DesignEngine\Asset\ThemePackage
         arguments:
-            - "@ezdesign.asset_path_resolver"
+            - '@ibexadesign.asset_path_resolver'
             - "@assets._default_package"
         calls:
-            - [setConfigResolver, ["@ezpublish.config.resolver"]]
+            - [setConfigResolver, ['@ibexa.config.resolver']]

@@ -28,13 +28,13 @@ class AssetPathResolutionPass implements CompilerPassInterface
         }
 
         $resolvedPathsByDesign = $this->preResolveAssetsPaths(
-            $container->get('ezdesign.asset_path_resolver.provisioned'),
+            $container->get(\Ibexa\DesignEngine\Asset\ProvisionedPathResolver::class),
             $container->getParameter('ezdesign.assets_path_map')
         );
 
         $container->setParameter('ezdesign.asset_resolved_paths', $resolvedPathsByDesign);
-        $container->findDefinition('ezdesign.asset_path_resolver.provisioned')->replaceArgument(0, $resolvedPathsByDesign);
-        $container->setAlias('ezdesign.asset_path_resolver', new Alias('ezdesign.asset_path_resolver.provisioned'));
+        $container->findDefinition(\Ibexa\DesignEngine\Asset\ProvisionedPathResolver::class)->replaceArgument(0, $resolvedPathsByDesign);
+        $container->setAlias('ibexadesign.asset_path_resolver', new Alias(\Ibexa\DesignEngine\Asset\ProvisionedPathResolver::class));
     }
 
     private function preResolveAssetsPaths(AssetPathProvisionerInterface $provisioner, array $designPathMap)
