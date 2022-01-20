@@ -7,6 +7,7 @@
 namespace Ibexa\Bundle\DesignEngine\DependencyInjection\Compiler;
 
 use Ibexa\DesignEngine\Asset\AssetPathProvisionerInterface;
+use Ibexa\DesignEngine\Asset\ProvisionedPathResolver;
 use Symfony\Component\DependencyInjection\Alias;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -28,13 +29,13 @@ class AssetPathResolutionPass implements CompilerPassInterface
         }
 
         $resolvedPathsByDesign = $this->preResolveAssetsPaths(
-            $container->get('ezdesign.asset_path_resolver.provisioned'),
+            $container->get(ProvisionedPathResolver::class),
             $container->getParameter('ezdesign.assets_path_map')
         );
 
         $container->setParameter('ezdesign.asset_resolved_paths', $resolvedPathsByDesign);
-        $container->findDefinition('ezdesign.asset_path_resolver.provisioned')->replaceArgument(0, $resolvedPathsByDesign);
-        $container->setAlias('ezdesign.asset_path_resolver', new Alias('ezdesign.asset_path_resolver.provisioned'));
+        $container->findDefinition(ProvisionedPathResolver::class)->replaceArgument(0, $resolvedPathsByDesign);
+        $container->setAlias('ibexadesign.asset_path_resolver', new Alias(ProvisionedPathResolver::class));
     }
 
     private function preResolveAssetsPaths(AssetPathProvisionerInterface $provisioner, array $designPathMap)

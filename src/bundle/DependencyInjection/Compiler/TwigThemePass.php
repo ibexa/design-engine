@@ -7,6 +7,8 @@
 namespace Ibexa\Bundle\DesignEngine\DependencyInjection\Compiler;
 
 use Ibexa\Bundle\DesignEngine\DataCollector\TwigDataCollector;
+use Ibexa\DesignEngine\Templating\TemplatePathRegistry;
+use Ibexa\DesignEngine\Templating\Twig\TwigThemeLoader;
 use ReflectionClass;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -23,7 +25,7 @@ class TwigThemePass implements CompilerPassInterface
 {
     public function process(ContainerBuilder $container)
     {
-        if (!($container->hasParameter('kernel.bundles') && $container->hasDefinition('ezdesign.twig_theme_loader'))) {
+        if (!($container->hasParameter('kernel.bundles') && $container->hasDefinition(TwigThemeLoader::class))) {
             return;
         }
 
@@ -50,7 +52,7 @@ class TwigThemePass implements CompilerPassInterface
             }
         }
 
-        $twigLoaderDef = $container->findDefinition('ezdesign.twig_theme_loader');
+        $twigLoaderDef = $container->findDefinition(TwigThemeLoader::class);
         // Now look for themes at application level
         $appLevelThemesDir = $globalViewsDir . '/themes';
         if (is_dir($appLevelThemesDir)) {
@@ -107,7 +109,7 @@ class TwigThemePass implements CompilerPassInterface
             $twigDataCollector->addArgument(new Reference('twig'));
         }
 
-        $twigDataCollector->addArgument(new Reference('ezdesign.template_path_registry'));
+        $twigDataCollector->addArgument(new Reference(TemplatePathRegistry::class));
     }
 }
 
