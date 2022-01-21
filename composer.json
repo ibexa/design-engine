@@ -48,10 +48,10 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "EzSystems\\EzPlatformDesignEngine\\Tests\\": "tests/lib",
-            "EzSystems\\EzPlatformDesignEngineBundle\\Tests\\": "tests/bundle",
             "Ibexa\\Tests\\Bundle\\DesignEngine\\": "tests/bundle/",
-            "Ibexa\\Tests\\DesignEngine\\": "tests/lib/"
+            "Ibexa\\Tests\\DesignEngine\\": "tests/lib/",
+            "EzSystems\\EzPlatformDesignEngine\\Tests\\": "tests/lib",
+            "EzSystems\\EzPlatformDesignEngineBundle\\Tests\\": "tests/bundle"
         }
     },
     "scripts": {
