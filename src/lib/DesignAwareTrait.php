@@ -20,7 +20,7 @@ trait DesignAwareTrait
         $this->configResolver = $configResolver;
     }
 
-    public function getCurrentDesign(): string
+    public function getCurrentDesign(): ?string
     {
         return $this->configResolver->getParameter('design');
     }
