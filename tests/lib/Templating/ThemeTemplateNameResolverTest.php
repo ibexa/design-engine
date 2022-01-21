@@ -28,7 +28,7 @@ class ThemeTemplateNameResolverTest extends TestCase
     {
         return [
             [null, 'foo.html.twig', 'foo.html.twig'],
-            ['my_design', '@ezdesign/foo.html.twig', '@my_design/foo.html.twig'],
+            ['my_design', '@ibexadesign/foo.html.twig', '@my_design/foo.html.twig'],
             ['my_design', '@AcmeTest/foo.html.twig', '@AcmeTest/foo.html.twig'],
         ];
     }
@@ -50,7 +50,7 @@ class ThemeTemplateNameResolverTest extends TestCase
     {
         return [
             [null, 'foo.html.twig', false],
-            ['my_design', '@ezdesign/foo.html.twig', true],
+            ['my_design', '@ibexadesign/foo.html.twig', true],
             ['my_design', '@my_design/foo.html.twig', true],
             ['my_design', '@AcmeTest/foo.html.twig', false],
         ];
