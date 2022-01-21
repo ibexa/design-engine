@@ -31,6 +31,7 @@
     "require-dev": {
         "ibexa/code-style": "^1.0",
         "ibexa/doctrine-schema": "^4.0@dev",
+        "ezsystems/ezplatform-code-style": "^1.0",
         "phpunit/phpunit": "^8.1",
         "friendsofphp/php-cs-fixer": "^3.0",
         "mikey179/vfsstream": "^1.6"
@@ -53,7 +54,9 @@
         }
     },
     "scripts": {
-        "fix-cs": "php-cs-fixer fix --config=.php-cs-fixer.php -v --show-progress=dots"
+        "fix-cs": "php-cs-fixer fix --config=.php-cs-fixer.php -v --show-progress=dots",
+        "check-cs": "@fix-cs --dry-run",
+        "test": "phpunit"
     },
     "extra": {
         "branch-alias": {
@@ -62,5 +65,10 @@
     },
     "conflict": {
         "lolautruche/ez-core-extra-bundle": "<2.0"
+    },
+    "config": {
+        "allow-plugins": {
+            "composer/package-versions-deprecated": true
+        }
     }
 }
