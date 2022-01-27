@@ -7,7 +7,6 @@ parameters:
     ezdesign.assets_override_paths: []
     ezdesign.asset_resolved_paths: {}
     ezdesign.asset_resolution.disabled: '%kernel.debug%'
-    ezdesign.phpstorm.enabled: true
 
 services:
     Ibexa\DesignEngine\Templating\ThemeTemplateNameResolver:

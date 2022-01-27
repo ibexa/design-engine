@@ -47,10 +47,6 @@ class IbexaDesignEngineExtension extends Extension
         $container->setParameter('ezdesign.templates_override_paths', $config['templates_override_paths']);
         $container->setParameter('ezdesign.templates_path_map', $config['templates_theme_paths']);
         $container->setParameter('ezdesign.asset_resolution.disabled', $config['disable_assets_pre_resolution']);
-
-        // PHPStorm settings
-        $container->setParameter('ezdesign.phpstorm.enabled', $config['phpstorm']['enabled']);
-        $container->setParameter('ezdesign.phpstorm.twig_config_path', $config['phpstorm']['twig_config_path']);
     }
 }
 

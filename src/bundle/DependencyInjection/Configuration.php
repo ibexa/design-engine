@@ -43,16 +43,6 @@ class Configuration extends SiteAccessConfiguration
                     ->info('If set to true, assets path won\'t be pre-resolved at compile time.')
                     ->defaultValue('%kernel.debug%')
                 ->end()
-                ->arrayNode('phpstorm')
-                    ->addDefaultsIfNotSet()
-                    ->children()
-                        ->booleanNode('enabled')->defaultValue('%kernel.debug%')->info('Activates PHPStorm support')->end()
-                        ->scalarNode('twig_config_path')
-                            ->info('Path where to store PHPStorm configuration file for additional Twig namespaces (ide-twig.json).')
-                            ->defaultValue('%kernel.project_dir%')
-                        ->end()
-                    ->end()
-                ->end()
             ->end();
 
         return $treeBuilder;

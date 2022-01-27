@@ -8,7 +8,6 @@ namespace Ibexa\Bundle\DesignEngine;
 
 use Ibexa\Bundle\DesignEngine\DependencyInjection\Compiler\AssetPathResolutionPass;
 use Ibexa\Bundle\DesignEngine\DependencyInjection\Compiler\AssetThemePass;
-use Ibexa\Bundle\DesignEngine\DependencyInjection\Compiler\PHPStormPass;
 use Ibexa\Bundle\DesignEngine\DependencyInjection\Compiler\TwigThemePass;
 use Ibexa\Bundle\DesignEngine\DependencyInjection\DesignConfigParser;
 use Ibexa\Bundle\DesignEngine\DependencyInjection\IbexaDesignEngineExtension;
@@ -30,7 +29,6 @@ class IbexaDesignEngineBundle extends Bundle
         $container->addCompilerPass(new TwigThemePass());
         $container->addCompilerPass(new AssetThemePass(), PassConfig::TYPE_OPTIMIZE);
         $container->addCompilerPass(new AssetPathResolutionPass(), PassConfig::TYPE_OPTIMIZE);
-        $container->addCompilerPass(new PHPStormPass(), PassConfig::TYPE_OPTIMIZE);
     }
 
     public function getContainerExtension()
