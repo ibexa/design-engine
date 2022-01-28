@@ -30,7 +30,7 @@ interface TemplateNameResolverInterface extends DesignAwareInterface
     public function resolveTemplateName($name);
 
     /**
-     * Checks if provided template name is using @ezdesign namespace.
+     * Checks if provided template name is using @ibexadesign namespace.
      *
      * @param string $name
      *

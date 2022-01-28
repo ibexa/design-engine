@@ -14,7 +14,7 @@ use Twig\Source;
 
 /**
  * Decorates regular Twig FilesystemLoader.
- * It resolves generic @ezdesign namespace to the actual current namespace.
+ * It resolves generic @ibexadesign namespace to the actual current namespace.
  */
 class TwigThemeLoader implements LoaderInterface
 {
