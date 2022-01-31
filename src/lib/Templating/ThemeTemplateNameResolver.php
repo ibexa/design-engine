@@ -6,7 +6,7 @@
  */
 namespace Ibexa\DesignEngine\Templating;
 
-use Ibexa\Core\MVC\ConfigResolverInterface;
+use Ibexa\Contracts\Core\SiteAccess\ConfigResolverInterface;
 use Ibexa\DesignEngine\DesignAwareTrait;
 
 class ThemeTemplateNameResolver implements TemplateNameResolverInterface

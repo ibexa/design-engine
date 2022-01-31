@@ -6,7 +6,7 @@
  */
 namespace Ibexa\Tests\DesignEngine\Asset;
 
-use Ibexa\Core\MVC\ConfigResolverInterface;
+use Ibexa\Contracts\Core\SiteAccess\ConfigResolverInterface;
 use Ibexa\DesignEngine\Asset\AssetPathResolverInterface;
 use Ibexa\DesignEngine\Asset\ThemePackage;
 use PHPUnit\Framework\TestCase;
@@ -25,7 +25,7 @@ class ThemePackageTest extends TestCase
     private $innerPackage;
 
     /**
-     * @var \PHPUnit\Framework\MockObject\MockObject|\Ibexa\Core\MVC\ConfigResolverInterface
+     * @var \PHPUnit\Framework\MockObject\MockObject|\Ibexa\Contracts\Core\SiteAccess\ConfigResolverInterface
      */
     private $configResolver;
 
