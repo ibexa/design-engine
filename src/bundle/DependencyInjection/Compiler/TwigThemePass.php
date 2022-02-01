@@ -34,7 +34,7 @@ class TwigThemePass implements CompilerPassInterface
             (new Filesystem())->mkdir($globalViewsDir);
         }
         $themesPathMap = [
-            '_override' => $container->getParameter('ezdesign.templates_override_paths'),
+            '_override' => $container->getParameter('ibexa.design.templates.override_paths'),
         ];
         $finder = new Finder();
         // Look for themes in bundles.
@@ -67,14 +67,14 @@ class TwigThemePass implements CompilerPassInterface
 
         // Now merge with already configured template theme paths
         // Template theme paths defined via config will always have less priority than convention based paths
-        $themesPathMap = array_merge_recursive($themesPathMap, $container->getParameter('ezdesign.templates_path_map'));
+        $themesPathMap = array_merge_recursive($themesPathMap, $container->getParameter('ibexa.design.templates.path_map'));
 
         // De-duplicate the map
         foreach ($themesPathMap as $theme => &$paths) {
             $paths = array_unique($paths);
         }
 
-        foreach ($container->getParameter('ezdesign.design_list') as $designName => $themeFallback) {
+        foreach ($container->getParameter('ibexa.design.list') as $designName => $themeFallback) {
             // Always add _override theme first.
             array_unshift($themeFallback, '_override');
             foreach ($themeFallback as $theme) {
@@ -89,14 +89,14 @@ class TwigThemePass implements CompilerPassInterface
             }
         }
 
-        $themesList = $container->getParameter('ezdesign.themes_list');
+        $themesList = $container->getParameter('ibexa.design.themes.list');
         $container->setParameter(
-            'ezdesign.themes_list',
+            'ibexa.design.themes.list',
             array_unique(
                 array_merge($themesList, array_keys($themesPathMap))
             )
         );
-        $container->setParameter('ezdesign.templates_path_map', $themesPathMap);
+        $container->setParameter('ibexa.design.templates.path_map', $themesPathMap);
 
         $twigDataCollector = $container->findDefinition('data_collector.twig');
         $twigDataCollector->setClass(TwigDataCollector::class);
