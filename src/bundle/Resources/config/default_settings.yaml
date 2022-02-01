@@ -1,2 +1,2 @@
 parameters:
-    ezsettings.default.design: standard
+    ibexa.site_access.config.default.design: standard

@@ -32,7 +32,7 @@ class DesignConfigParser implements ParserInterface
         $nodeBuilder
             ->scalarNode('design')
                 ->cannotBeEmpty()
-                ->info('Name of the design to use. Must be declared in ezdesign.design_list')
+                ->info('Name of the design to use. Must be declared in "ibexa.design.list"')
             ->end();
     }
 }

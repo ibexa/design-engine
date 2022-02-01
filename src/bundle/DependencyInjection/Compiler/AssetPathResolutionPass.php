@@ -24,16 +24,16 @@ class AssetPathResolutionPass implements CompilerPassInterface
 {
     public function process(ContainerBuilder $container)
     {
-        if ($container->getParameter('ezdesign.asset_resolution.disabled')) {
+        if ($container->getParameter('ibexa.design.assets.resolution.disabled')) {
             return;
         }
 
         $resolvedPathsByDesign = $this->preResolveAssetsPaths(
             $container->get(ProvisionedPathResolver::class),
-            $container->getParameter('ezdesign.assets_path_map')
+            $container->getParameter('ibexa.design.assets.path_map')
         );
 
-        $container->setParameter('ezdesign.asset_resolved_paths', $resolvedPathsByDesign);
+        $container->setParameter('ibexa.design.assets.resolved_paths', $resolvedPathsByDesign);
         $container->findDefinition(ProvisionedPathResolver::class)->replaceArgument(0, $resolvedPathsByDesign);
         $container->setAlias('ibexadesign.asset_path_resolver', new Alias(ProvisionedPathResolver::class));
     }

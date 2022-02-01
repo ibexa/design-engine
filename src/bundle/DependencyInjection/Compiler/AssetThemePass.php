@@ -23,7 +23,7 @@ class AssetThemePass implements CompilerPassInterface
         $themesPathMap = [
             '_override' => array_merge(
                 ['assets'],
-                $container->getParameter('ezdesign.assets_override_paths')
+                $container->getParameter('ibexa.design.assets.override_paths')
             ),
         ];
         $finder = new Finder();
@@ -61,7 +61,7 @@ class AssetThemePass implements CompilerPassInterface
         }
 
         $pathsByDesign = [];
-        foreach ($container->getParameter('ezdesign.design_list') as $designName => $themeFallback) {
+        foreach ($container->getParameter('ibexa.design.list') as $designName => $themeFallback) {
             // Always add _override theme first.
             array_unshift($themeFallback, '_override');
             foreach ($themeFallback as $theme) {
@@ -76,14 +76,14 @@ class AssetThemePass implements CompilerPassInterface
             }
         }
 
-        $themesList = $container->getParameter('ezdesign.themes_list');
+        $themesList = $container->getParameter('ibexa.design.themes.list');
         $container->setParameter(
-            'ezdesign.themes_list',
+            'ibexa.design.themes.list',
             array_unique(
                 array_merge($themesList, array_keys($themesPathMap))
             )
         );
-        $container->setParameter('ezdesign.assets_path_map', $pathsByDesign);
+        $container->setParameter('ibexa.design.assets.path_map', $pathsByDesign);
         $container->findDefinition('ibexadesign.asset_path_resolver')
             ->replaceArgument(0, $pathsByDesign);
         $container->findDefinition('assets.packages')
