@@ -27,7 +27,7 @@ class AssetPathResolverTest extends TestCase
     }
 
     /**
-     * @covers \EzSystems\EzPlatformDesignEngine\Asset\AssetPathResolver::resolveAssetPath
+     * @covers \Ibexa\DesignEngine\Asset\AssetPathResolver::resolveAssetPath
      */
     public function testResolveInvalidDesign()
     {
