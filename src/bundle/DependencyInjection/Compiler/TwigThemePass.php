@@ -104,7 +104,7 @@ class TwigThemePass implements CompilerPassInterface
         if (\count($twigDataCollector->getArguments()) === 1) {
             // In versions of Symfony prior to 3.4, "data_collector.twig" had only one
             // argument, we're adding "twig" service to satisfy constructor overriden
-            // in EzSystems\EzPlatformDesignEngineBundle\DataCollector\TwigDataCollector
+            // in \IbexaDesignEngineBundle\DataCollector\TwigDataCollector
             // which is based on Symfony 3.4 version of base TwigDataCollector
             $twigDataCollector->addArgument(new Reference('twig'));
         }
