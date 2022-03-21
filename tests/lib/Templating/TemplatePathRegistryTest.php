@@ -4,9 +4,9 @@
  * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
-namespace EzSystems\EzPlatformDesignEngine\Tests\Templating;
+namespace Ibexa\Tests\DesignEngine\Templating;
 
-use EzSystems\EzPlatformDesignEngine\Templating\TemplatePathRegistry;
+use Ibexa\DesignEngine\Templating\TemplatePathRegistry;
 use PHPUnit\Framework\TestCase;
 
 class TemplatePathRegistryTest extends TestCase
@@ -54,3 +54,5 @@ class TemplatePathRegistryTest extends TestCase
         self::assertSame($templateLogicalName, $registry->getTemplatePath($templateLogicalName));
     }
 }
+
+class_alias(TemplatePathRegistryTest::class, 'EzSystems\EzPlatformDesignEngine\Tests\Templating\TemplatePathRegistryTest');

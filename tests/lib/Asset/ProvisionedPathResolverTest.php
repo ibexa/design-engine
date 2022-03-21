@@ -4,18 +4,18 @@
  * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
-namespace EzSystems\EzPlatformDesignEngine\Tests\Asset;
+namespace Ibexa\Tests\DesignEngine\Asset;
 
-use EzSystems\EzPlatformDesignEngine\Asset\AssetPathResolver;
-use EzSystems\EzPlatformDesignEngine\Asset\AssetPathResolverInterface;
-use EzSystems\EzPlatformDesignEngine\Asset\ProvisionedPathResolver;
+use Ibexa\DesignEngine\Asset\AssetPathResolver;
+use Ibexa\DesignEngine\Asset\AssetPathResolverInterface;
+use Ibexa\DesignEngine\Asset\ProvisionedPathResolver;
 use org\bovigo\vfs\vfsStream;
 use PHPUnit\Framework\TestCase;
 
 class ProvisionedPathResolverTest extends TestCase
 {
     /**
-     * @var \PHPUnit\Framework\MockObject\MockObject|\EzSystems\EzPlatformDesignEngine\Asset\AssetPathResolverInterface
+     * @var \PHPUnit\Framework\MockObject\MockObject|\Ibexa\DesignEngine\Asset\AssetPathResolverInterface
      */
     private $innerResolver;
 
@@ -111,3 +111,5 @@ class ProvisionedPathResolverTest extends TestCase
         self::assertEquals($expectedResolvedPaths, $provisioner->provisionResolvedPaths($themesPaths, $design));
     }
 }
+
+class_alias(ProvisionedPathResolverTest::class, 'EzSystems\EzPlatformDesignEngine\Tests\Asset\ProvisionedPathResolverTest');

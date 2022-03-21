@@ -1,0 +1,53 @@
+parameters:
+    ibexa.design.themes.list: []
+    ibexa.design.list: []
+    ibexa.design.templates.path_map: {}
+    ibexa.design.assets.path_map: {}
+    ibexa.design.templates.override_paths: []
+    ibexa.design.assets.override_paths: []
+    ibexa.design.assets.resolved_paths: {}
+    ibexa.design.assets.resolution.disabled: '%kernel.debug%'
+
+services:
+    Ibexa\DesignEngine\Templating\ThemeTemplateNameResolver:
+        class: Ibexa\DesignEngine\Templating\ThemeTemplateNameResolver
+        arguments: ['@ibexa.config.resolver']
+
+    Ibexa\DesignEngine\Templating\TemplatePathRegistry:
+        class: Ibexa\DesignEngine\Templating\TemplatePathRegistry
+        arguments: ["%kernel.project_dir%"]
+
+    Ibexa\DesignEngine\Templating\Twig\TwigThemeLoader:
+        class: Ibexa\DesignEngine\Templating\Twig\TwigThemeLoader
+        public: false
+        decorates: twig.loader.native_filesystem
+        arguments:
+            - '@Ibexa\DesignEngine\Templating\ThemeTemplateNameResolver'
+            - '@Ibexa\DesignEngine\Templating\TemplatePathRegistry'
+            - '@Ibexa\DesignEngine\Templating\Twig\TwigThemeLoader.inner'
+
+    Ibexa\DesignEngine\Asset\AssetPathResolver:
+        class: Ibexa\DesignEngine\Asset\AssetPathResolver
+        arguments:
+            - '%ibexa.design.assets.path_map%'
+            - "%webroot_dir%"
+        public: false
+
+    Ibexa\DesignEngine\Asset\ProvisionedPathResolver:
+        class: Ibexa\DesignEngine\Asset\ProvisionedPathResolver
+        arguments:
+            - '%ibexa.design.assets.resolved_paths%'
+            - '@Ibexa\DesignEngine\Asset\AssetPathResolver'
+            - '%webroot_dir%'
+        public: false
+
+    ibexadesign.asset_path_resolver:
+        alias: Ibexa\DesignEngine\Asset\AssetPathResolver
+
+    Ibexa\DesignEngine\Asset\ThemePackage:
+        class: Ibexa\DesignEngine\Asset\ThemePackage
+        arguments:
+            - '@ibexadesign.asset_path_resolver'
+            - "@assets._default_package"
+        calls:
+            - [setConfigResolver, ['@ibexa.config.resolver']]

@@ -4,18 +4,18 @@
  * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
-namespace EzSystems\EzPlatformDesignEngine\Tests\Asset;
+namespace Ibexa\Tests\DesignEngine\Asset;
 
-use eZ\Publish\Core\MVC\ConfigResolverInterface;
-use EzSystems\EzPlatformDesignEngine\Asset\AssetPathResolverInterface;
-use EzSystems\EzPlatformDesignEngine\Asset\ThemePackage;
+use Ibexa\Contracts\Core\SiteAccess\ConfigResolverInterface;
+use Ibexa\DesignEngine\Asset\AssetPathResolverInterface;
+use Ibexa\DesignEngine\Asset\ThemePackage;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Asset\PackageInterface;
 
 class ThemePackageTest extends TestCase
 {
     /**
-     * @var \PHPUnit\Framework\MockObject\MockObject|\EzSystems\EzPlatformDesignEngine\Asset\AssetPathResolverInterface
+     * @var \PHPUnit\Framework\MockObject\MockObject|\Ibexa\DesignEngine\Asset\AssetPathResolverInterface
      */
     private $assetPathResolver;
 
@@ -25,7 +25,7 @@ class ThemePackageTest extends TestCase
     private $innerPackage;
 
     /**
-     * @var \PHPUnit\Framework\MockObject\MockObject|\eZ\Publish\Core\MVC\ConfigResolverInterface
+     * @var \PHPUnit\Framework\MockObject\MockObject|\Ibexa\Contracts\Core\SiteAccess\ConfigResolverInterface
      */
     private $configResolver;
 
@@ -91,3 +91,5 @@ class ThemePackageTest extends TestCase
         self::assertSame($version, $package->getVersion($assetPath));
     }
 }
+
+class_alias(ThemePackageTest::class, 'EzSystems\EzPlatformDesignEngine\Tests\Asset\ThemePackageTest');
