@@ -4,16 +4,16 @@
  * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
-namespace EzSystems\EzPlatformDesignEngine\Tests\Templating;
+namespace Ibexa\Tests\DesignEngine\Templating;
 
-use eZ\Publish\Core\MVC\ConfigResolverInterface;
-use EzSystems\EzPlatformDesignEngine\Templating\ThemeTemplateNameResolver;
+use Ibexa\Contracts\Core\SiteAccess\ConfigResolverInterface;
+use Ibexa\DesignEngine\Templating\ThemeTemplateNameResolver;
 use PHPUnit\Framework\TestCase;
 
 class ThemeTemplateNameResolverTest extends TestCase
 {
     /**
-     * @var \PHPUnit\Framework\MockObject\MockObject|\eZ\Publish\Core\MVC\ConfigResolverInterface
+     * @var \PHPUnit\Framework\MockObject\MockObject|\Ibexa\Contracts\Core\SiteAccess\ConfigResolverInterface
      */
     private $configResolver;
 
@@ -28,7 +28,7 @@ class ThemeTemplateNameResolverTest extends TestCase
     {
         return [
             [null, 'foo.html.twig', 'foo.html.twig'],
-            ['my_design', '@ezdesign/foo.html.twig', '@my_design/foo.html.twig'],
+            ['my_design', '@ibexadesign/foo.html.twig', '@my_design/foo.html.twig'],
             ['my_design', '@AcmeTest/foo.html.twig', '@AcmeTest/foo.html.twig'],
         ];
     }
@@ -50,7 +50,7 @@ class ThemeTemplateNameResolverTest extends TestCase
     {
         return [
             [null, 'foo.html.twig', false],
-            ['my_design', '@ezdesign/foo.html.twig', true],
+            ['my_design', '@ibexadesign/foo.html.twig', true],
             ['my_design', '@my_design/foo.html.twig', true],
             ['my_design', '@AcmeTest/foo.html.twig', false],
         ];
@@ -69,3 +69,5 @@ class ThemeTemplateNameResolverTest extends TestCase
         self::assertSame($expected, $resolver->isTemplateDesignNamespaced($templateName));
     }
 }
+
+class_alias(ThemeTemplateNameResolverTest::class, 'EzSystems\EzPlatformDesignEngine\Tests\Templating\ThemeTemplateNameResolverTest');

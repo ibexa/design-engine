@@ -17,10 +17,11 @@ return $configFactory
     ->buildConfig()
     ->setFinder(
         PhpCsFixer\Finder::create()
-            ->in(__DIR__)
-            ->exclude([
-                'vendor',
-                'doc',
-            ])
+            ->in(
+                array_filter([
+                    __DIR__ . '/src',
+                    __DIR__ . '/tests',
+                ], 'is_dir')
+            )
             ->files()->name('*.php')
     );
