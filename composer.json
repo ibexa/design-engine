@@ -18,7 +18,7 @@
     ],
     "require": {
         "php": "^7.4 || ^8.0",
-        "ibexa/core": "~4.2.0@dev",
+        "ibexa/core": "~4.2.0",
         "twig/twig": "^3.0",
         "symfony/dependency-injection": "^5.0",
         "symfony/http-kernel": "^5.0",
@@ -31,7 +31,7 @@
     },
     "require-dev": {
         "ibexa/code-style": "^1.0",
-        "ibexa/doctrine-schema": "~4.2.0@dev",
+        "ibexa/doctrine-schema": "~4.2.0",
         "phpunit/phpunit": "^8.1",
         "friendsofphp/php-cs-fixer": "^3.0",
         "mikey179/vfsstream": "^1.6"
