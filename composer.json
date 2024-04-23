@@ -17,24 +17,24 @@
         }
     ],
     "require": {
-        "php": "^7.4 || ^8.0",
-        "ibexa/core": "~5.0.0@dev",
-        "twig/twig": "^3.0",
-        "symfony/dependency-injection": "^5.0",
-        "symfony/http-kernel": "^5.0",
-        "symfony/http-foundation": "^5.0",
-        "symfony/config": "^5.0",
-        "symfony/finder": "^5.0",
-        "symfony/filesystem": "^5.0",
+        "php": " >=8.3",
+        "ibexa/core": "~5.0.x-dev",
         "symfony/asset": "^5.0",
-        "symfony/templating": "^5.0"
+        "symfony/config": "^5.0",
+        "symfony/dependency-injection": "^5.0",
+        "symfony/filesystem": "^5.0",
+        "symfony/finder": "^5.0",
+        "symfony/http-foundation": "^5.0",
+        "symfony/http-kernel": "^5.0",
+        "symfony/templating": "^5.0",
+        "twig/twig": "^3.0"
     },
     "require-dev": {
-        "ibexa/code-style": "^1.0",
-        "ibexa/doctrine-schema": "~5.0.0@dev",
-        "phpunit/phpunit": "^8.1",
         "friendsofphp/php-cs-fixer": "^3.0",
-        "mikey179/vfsstream": "^1.6"
+        "ibexa/code-style": "^1.0",
+        "ibexa/doctrine-schema": "~5.0.x-dev",
+        "mikey179/vfsstream": "^1.6",
+        "phpunit/phpunit": "^8.1"
     },
     "autoload": {
         "psr-4": {
@@ -67,6 +67,7 @@
         "lolautruche/ez-core-extra-bundle": "<2.0"
     },
     "config": {
-        "allow-plugins": false
+        "allow-plugins": false,
+        "sort-packages": true
     }
 }
