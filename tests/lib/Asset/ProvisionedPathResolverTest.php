@@ -4,6 +4,7 @@
  * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
+
 namespace Ibexa\Tests\DesignEngine\Asset;
 
 use Ibexa\DesignEngine\Asset\AssetPathResolver;
@@ -37,7 +38,7 @@ class ProvisionedPathResolverTest extends TestCase
         $design = 'foo';
         $expected = 'some/path/images/some_image.jpg';
         $this->innerResolver
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('resolveAssetPath')
             ->with($assetLogicalPath, $design)
             ->willReturn($expected);

@@ -30,11 +30,10 @@
         "twig/twig": "^3.0"
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^3.0",
-        "ibexa/code-style": "^1.0",
+        "ibexa/code-style": "~2.0.0",
         "ibexa/doctrine-schema": "~5.0.x-dev",
         "mikey179/vfsstream": "^1.6",
-        "phpunit/phpunit": "^8.1"
+        "phpunit/phpunit": "^9.6"
     },
     "autoload": {
         "psr-4": {
