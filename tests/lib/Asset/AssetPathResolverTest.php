@@ -4,6 +4,7 @@
  * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
+
 namespace Ibexa\Tests\DesignEngine\Asset;
 
 use Ibexa\DesignEngine\Asset\AssetPathResolver;
@@ -18,7 +19,7 @@ class AssetPathResolverTest extends TestCase
     {
         $logger = $this->createMock(LoggerInterface::class);
         $logger
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('warning');
 
         $resolver = new AssetPathResolver(['foo' => []], __DIR__, $logger);

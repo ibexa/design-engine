@@ -4,6 +4,7 @@
  * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
+
 namespace Ibexa\Tests\DesignEngine\Asset;
 
 use Ibexa\Contracts\Core\SiteAccess\ConfigResolverInterface;
@@ -45,12 +46,12 @@ class ThemePackageTest extends TestCase
         $currentDesign = 'foo';
 
         $this->assetPathResolver
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('resolveAssetPath')
             ->with($assetPath, $currentDesign)
             ->willReturn($fullAssetPath);
         $this->innerPackage
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('getUrl')
             ->with($fullAssetPath)
             ->willReturn("/$fullAssetPath");
@@ -71,13 +72,13 @@ class ThemePackageTest extends TestCase
         $currentDesign = 'foo';
 
         $this->assetPathResolver
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('resolveAssetPath')
             ->with($assetPath, $currentDesign)
             ->willReturn($fullAssetPath);
         $version = 'v1';
         $this->innerPackage
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('getVersion')
             ->with($fullAssetPath)
             ->willReturn($version);
