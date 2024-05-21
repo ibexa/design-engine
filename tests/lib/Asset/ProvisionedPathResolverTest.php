@@ -112,5 +112,3 @@ class ProvisionedPathResolverTest extends TestCase
         self::assertEquals($expectedResolvedPaths, $provisioner->provisionResolvedPaths($themesPaths, $design));
     }
 }
-
-class_alias(ProvisionedPathResolverTest::class, 'EzSystems\EzPlatformDesignEngine\Tests\Asset\ProvisionedPathResolverTest');

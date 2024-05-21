@@ -55,5 +55,3 @@ class TemplatePathRegistryTest extends TestCase
         self::assertSame($templateLogicalName, $registry->getTemplatePath($templateLogicalName));
     }
 }
-
-class_alias(TemplatePathRegistryTest::class, 'EzSystems\EzPlatformDesignEngine\Tests\Templating\TemplatePathRegistryTest');

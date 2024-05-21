@@ -132,5 +132,3 @@ class AssetPathResolverTest extends TestCase
         self::assertSame($resolvedPath, $resolver->resolveAssetPath($path, 'foo'));
     }
 }
-
-class_alias(AssetPathResolverTest::class, 'EzSystems\EzPlatformDesignEngine\Tests\Asset\AssetPathResolverTest');

@@ -70,5 +70,3 @@ class ThemeTemplateNameResolverTest extends TestCase
         self::assertSame($expected, $resolver->isTemplateDesignNamespaced($templateName));
     }
 }
-
-class_alias(ThemeTemplateNameResolverTest::class, 'EzSystems\EzPlatformDesignEngine\Tests\Templating\ThemeTemplateNameResolverTest');
