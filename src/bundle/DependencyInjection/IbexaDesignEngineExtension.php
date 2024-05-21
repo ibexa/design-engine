@@ -50,5 +50,3 @@ class IbexaDesignEngineExtension extends Extension
         $container->setParameter('ibexa.design.assets.resolution.disabled', $config['disable_assets_pre_resolution']);
     }
 }
-
-class_alias(IbexaDesignEngineExtension::class, 'EzSystems\EzPlatformDesignEngineBundle\DependencyInjection\EzPlatformDesignEngineExtension');

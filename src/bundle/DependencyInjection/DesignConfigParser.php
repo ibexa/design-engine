@@ -37,5 +37,3 @@ class DesignConfigParser implements ParserInterface
             ->end();
     }
 }
-
-class_alias(DesignConfigParser::class, 'EzSystems\EzPlatformDesignEngineBundle\DependencyInjection\DesignConfigParser');

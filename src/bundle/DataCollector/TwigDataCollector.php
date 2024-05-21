@@ -91,5 +91,3 @@ class TwigDataCollector extends BaseCollector implements LateDataCollectorInterf
         return $profile;
     }
 }
-
-class_alias(TwigDataCollector::class, 'EzSystems\EzPlatformDesignEngineBundle\DataCollector\TwigDataCollector');

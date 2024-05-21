@@ -20,5 +20,3 @@ interface AssetPathProvisionerInterface
      */
     public function provisionResolvedPaths(array $assetsPaths, $design);
 }
-
-class_alias(AssetPathProvisionerInterface::class, 'EzSystems\EzPlatformDesignEngine\Asset\AssetPathProvisionerInterface');

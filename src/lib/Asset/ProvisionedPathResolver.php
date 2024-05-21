@@ -91,5 +91,3 @@ class ProvisionedPathResolver implements AssetPathResolverInterface, AssetPathPr
         return $logicalPaths;
     }
 }
-
-class_alias(ProvisionedPathResolver::class, 'EzSystems\EzPlatformDesignEngine\Asset\ProvisionedPathResolver');

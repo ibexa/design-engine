@@ -44,5 +44,3 @@ class ThemeTemplateNameResolver implements TemplateNameResolverInterface
         return (strpos($name, '@' . static::DESIGN_NAMESPACE) !== false) || (strpos($name, '@' . $this->getCurrentDesign()) !== false);
     }
 }
-
-class_alias(ThemeTemplateNameResolver::class, 'EzSystems\EzPlatformDesignEngine\Templating\ThemeTemplateNameResolver');

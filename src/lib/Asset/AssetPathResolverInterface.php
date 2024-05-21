@@ -23,5 +23,3 @@ interface AssetPathResolverInterface
      */
     public function resolveAssetPath($path, $design);
 }
-
-class_alias(AssetPathResolverInterface::class, 'EzSystems\EzPlatformDesignEngine\Asset\AssetPathResolverInterface');

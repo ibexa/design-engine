@@ -57,5 +57,3 @@ class TemplatePathRegistry implements TemplatePathRegistryInterface, Serializabl
         [$this->pathMap, $this->kernelRootDir] = $data;
     }
 }
-
-class_alias(TemplatePathRegistry::class, 'EzSystems\EzPlatformDesignEngine\Templating\TemplatePathRegistry');
