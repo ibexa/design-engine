@@ -39,17 +39,13 @@
         "psr-4": {
             "Ibexa\\DesignEngine\\": "src/lib/",
             "Ibexa\\Bundle\\DesignEngine\\": "src/bundle/",
-            "Ibexa\\Contracts\\DesignEngine\\": "src/contracts/",
-            "EzSystems\\EzPlatformDesignEngine\\": "src/lib/",
-            "EzSystems\\EzPlatformDesignEngineBundle\\": "src/bundle/"
+            "Ibexa\\Contracts\\DesignEngine\\": "src/contracts/"
         }
     },
     "autoload-dev": {
         "psr-4": {
             "Ibexa\\Tests\\Bundle\\DesignEngine\\": "tests/bundle/",
-            "Ibexa\\Tests\\DesignEngine\\": "tests/lib/",
-            "EzSystems\\EzPlatformDesignEngine\\Tests\\": "tests/lib",
-            "EzSystems\\EzPlatformDesignEngineBundle\\Tests\\": "tests/bundle"
+            "Ibexa\\Tests\\DesignEngine\\": "tests/lib/"
         }
     },
     "scripts": {
