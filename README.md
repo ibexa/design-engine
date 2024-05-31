@@ -7,7 +7,7 @@ To use this package, [install Ibexa DXP](https://doc.ibexa.co/en/latest/install/
 This package allows to define fallback order for templates and assets.
 
 ## COPYRIGHT
-Copyright (C) 1999-2021 Ibexa AS (formerly eZ Systems AS). All rights reserved.
+Copyright (C) 1999-2024 Ibexa AS (formerly eZ Systems AS). All rights reserved.
 
 ## LICENSE
 This source code is available separately under the following licenses:
