@@ -13,5 +13,3 @@ interface DesignAwareInterface
 
     public function getCurrentDesign(): ?string;
 }
-
-class_alias(DesignAwareInterface::class, 'EzSystems\EzPlatformDesignEngine\DesignAwareInterface');

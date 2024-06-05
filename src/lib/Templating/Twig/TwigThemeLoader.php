@@ -97,5 +97,3 @@ class TwigThemeLoader implements LoaderInterface
         $this->innerFilesystemLoader->prependPath($path, $namespace);
     }
 }
-
-class_alias(TwigThemeLoader::class, 'EzSystems\EzPlatformDesignEngine\Templating\Twig\TwigThemeLoader');

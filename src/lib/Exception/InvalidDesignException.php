@@ -12,5 +12,3 @@ use InvalidArgumentException;
 class InvalidDesignException extends InvalidArgumentException
 {
 }
-
-class_alias(InvalidDesignException::class, 'EzSystems\EzPlatformDesignEngine\Exception\InvalidDesignException');

@@ -49,5 +49,3 @@ class AssetPathResolutionPass implements CompilerPassInterface
         return $resolvedPathsByDesign;
     }
 }
-
-class_alias(AssetPathResolutionPass::class, 'EzSystems\EzPlatformDesignEngineBundle\DependencyInjection\Compiler\AssetPathResolutionPass');

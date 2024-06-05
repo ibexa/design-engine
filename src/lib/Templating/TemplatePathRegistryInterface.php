@@ -37,5 +37,3 @@ interface TemplatePathRegistryInterface
      */
     public function getPathMap();
 }
-
-class_alias(TemplatePathRegistryInterface::class, 'EzSystems\EzPlatformDesignEngine\Templating\TemplatePathRegistryInterface');

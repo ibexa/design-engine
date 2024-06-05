@@ -58,5 +58,3 @@ class AssetPathResolver implements AssetPathResolverInterface
         return $path;
     }
 }
-
-class_alias(AssetPathResolver::class, 'EzSystems\EzPlatformDesignEngine\Asset\AssetPathResolver');

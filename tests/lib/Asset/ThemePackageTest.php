@@ -92,5 +92,3 @@ class ThemePackageTest extends TestCase
         self::assertSame($version, $package->getVersion($assetPath));
     }
 }
-
-class_alias(ThemePackageTest::class, 'EzSystems\EzPlatformDesignEngine\Tests\Asset\ThemePackageTest');

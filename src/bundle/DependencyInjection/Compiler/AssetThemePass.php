@@ -91,5 +91,3 @@ class AssetThemePass implements CompilerPassInterface
             ->addMethodCall('addPackage', [DesignAwareInterface::DESIGN_NAMESPACE, $container->findDefinition(ThemePackage::class)]);
     }
 }
-
-class_alias(AssetThemePass::class, 'EzSystems\EzPlatformDesignEngineBundle\DependencyInjection\Compiler\AssetThemePass');

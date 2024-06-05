@@ -39,5 +39,3 @@ interface TemplateNameResolverInterface extends DesignAwareInterface
      */
     public function isTemplateDesignNamespaced($name);
 }
-
-class_alias(TemplateNameResolverInterface::class, 'EzSystems\EzPlatformDesignEngine\Templating\TemplateNameResolverInterface');

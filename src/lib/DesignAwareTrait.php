@@ -26,5 +26,3 @@ trait DesignAwareTrait
         return $this->configResolver->getParameter('design');
     }
 }
-
-class_alias(DesignAwareTrait::class, 'EzSystems\EzPlatformDesignEngine\DesignAwareTrait');

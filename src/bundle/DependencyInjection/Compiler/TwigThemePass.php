@@ -108,5 +108,3 @@ class TwigThemePass implements CompilerPassInterface
         $twigDataCollector->addArgument(new Reference(TemplatePathRegistry::class));
     }
 }
-
-class_alias(TwigThemePass::class, 'EzSystems\EzPlatformDesignEngineBundle\DependencyInjection\Compiler\TwigThemePass');

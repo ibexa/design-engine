@@ -41,5 +41,3 @@ class IbexaDesignEngineBundle extends Bundle
         return $this->extension;
     }
 }
-
-class_alias(IbexaDesignEngineBundle::class, 'EzSystems\EzPlatformDesignEngineBundle\EzPlatformDesignEngineBundle');

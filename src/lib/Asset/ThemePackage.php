@@ -41,5 +41,3 @@ class ThemePackage implements PackageInterface, DesignAwareInterface
         return $this->innerPackage->getVersion($this->pathResolver->resolveAssetPath($path, $this->getCurrentDesign()));
     }
 }
-
-class_alias(ThemePackage::class, 'EzSystems\EzPlatformDesignEngine\Asset\ThemePackage');
