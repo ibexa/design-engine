@@ -14,6 +14,7 @@ use Ibexa\Bundle\DesignEngine\DependencyInjection\DesignConfigParser;
 use Ibexa\Bundle\DesignEngine\DependencyInjection\IbexaDesignEngineExtension;
 use Symfony\Component\DependencyInjection\Compiler\PassConfig;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 class IbexaDesignEngineBundle extends Bundle
@@ -32,7 +33,7 @@ class IbexaDesignEngineBundle extends Bundle
         $container->addCompilerPass(new AssetPathResolutionPass(), PassConfig::TYPE_OPTIMIZE);
     }
 
-    public function getContainerExtension()
+    public function getContainerExtension(): ?ExtensionInterface
     {
         if (!isset($this->extension)) {
             $this->extension = new IbexaDesignEngineExtension();
