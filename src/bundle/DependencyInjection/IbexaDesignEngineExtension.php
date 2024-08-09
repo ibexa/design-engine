@@ -8,6 +8,7 @@
 namespace Ibexa\Bundle\DesignEngine\DependencyInjection;
 
 use Ibexa\Bundle\Core\DependencyInjection\Configuration\SiteAccessAware\ConfigurationProcessor;
+use Symfony\Component\Config\Definition\ConfigurationInterface;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader;
@@ -17,12 +18,12 @@ class IbexaDesignEngineExtension extends Extension
 {
     public const EXTENSION_NAME = 'ibexa_design_engine';
 
-    public function getAlias()
+    public function getAlias(): string
     {
         return self::EXTENSION_NAME;
     }
 
-    public function getConfiguration(array $config, ContainerBuilder $container)
+    public function getConfiguration(array $config, ContainerBuilder $container): ?ConfigurationInterface
     {
         return new Configuration();
     }
