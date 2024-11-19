@@ -43,8 +43,9 @@ class ProvisionedPathResolver implements AssetPathResolverInterface, AssetPathPr
         $webrootDir = $this->webRootDir;
         $assetsLogicalPaths = [];
         foreach ($assetsPaths as $path) {
-            $themePath = "$webrootDir/$path";
-            $assetsLogicalPaths = array_merge($assetsLogicalPaths, $this->computeLogicalPathFromPhysicalAssets($themePath));
+            foreach ($this->computeLogicalPathFromPhysicalAssets("$webrootDir/$path") as $logicalPath) {
+                $assetsLogicalPaths[] = $logicalPath;
+            }
         }
 
         $resolvedPaths = [];
