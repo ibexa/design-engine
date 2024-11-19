@@ -9,18 +9,12 @@ namespace Ibexa\Bundle\DesignEngine\DataCollector;
 
 use Ibexa\DesignEngine\Templating\TemplatePathRegistryInterface;
 use Symfony\Bridge\Twig\DataCollector\TwigDataCollector as BaseCollector;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\DataCollector\LateDataCollectorInterface;
 use Twig\Environment;
 use Twig\Profiler\Profile;
 
-class TwigDataCollector extends BaseCollector implements LateDataCollectorInterface
+class TwigDataCollector extends BaseCollector
 {
-    /**
-     * @var \Ibexa\DesignEngine\Templating\TemplatePathRegistryInterface
-     */
-    private $templatePathRegistry;
+    private TemplatePathRegistryInterface $templatePathRegistry;
 
     public function __construct(Profile $profile, Environment $environment, TemplatePathRegistryInterface $templatePathRegistry)
     {
@@ -37,28 +31,13 @@ class TwigDataCollector extends BaseCollector implements LateDataCollectorInterf
         return $this->templatePathRegistry;
     }
 
-    public function collect(Request $request, Response $response, \Throwable $exception = null)
-    {
-        parent::collect($request, $response, $exception);
-    }
-
-    public function lateCollect()
+    public function lateCollect(): void
     {
         parent::lateCollect();
         $this->data['template_path_registry'] = serialize($this->templatePathRegistry);
     }
 
-    public function getTime()
-    {
-        return parent::getTime();
-    }
-
-    public function getTemplateCount()
-    {
-        return parent::getTemplateCount();
-    }
-
-    public function getTemplates()
+    public function getTemplates(): array
     {
         $registry = $this->getTemplatePathRegistry();
         $templates = [];
@@ -67,27 +46,5 @@ class TwigDataCollector extends BaseCollector implements LateDataCollectorInterf
         }
 
         return $templates;
-    }
-
-    public function getBlockCount()
-    {
-        return parent::getBlockCount();
-    }
-
-    public function getMacroCount()
-    {
-        return parent::getMacroCount();
-    }
-
-    public function getHtmlCallGraph()
-    {
-        return parent::getHtmlCallGraph();
-    }
-
-    public function getProfile()
-    {
-        $profile = parent::getProfile();
-
-        return $profile;
     }
 }
