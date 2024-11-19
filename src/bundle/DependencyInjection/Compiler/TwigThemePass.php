@@ -23,7 +23,10 @@ use Symfony\Component\Finder\Finder;
  */
 class TwigThemePass implements CompilerPassInterface
 {
-    public function process(ContainerBuilder $container)
+    /**
+     * @throws \ReflectionException
+     */
+    public function process(ContainerBuilder $container): void
     {
         if (!($container->hasParameter('kernel.bundles') && $container->hasDefinition(TwigThemeLoader::class))) {
             return;
