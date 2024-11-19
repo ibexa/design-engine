@@ -11,12 +11,12 @@ interface AssetPathProvisionerInterface
 {
     /**
      * Pre-resolves assets paths for a given design from themes paths, where are stored physical assets.
-     * Returns an map with asset logical path as key and its resolved path (relative to webroot dir) as value.
+     * Returns a map with asset logical path as key and its resolved path (relative to webroot dir) as value.
      * Example => ['images/foo.png' => 'asset/themes/some_theme/images/foo.png'].
      *
-     * @param string $design
+     * @param string[] $assetsPaths
      *
-     * @return array
+     * @return array<string, string>
      */
-    public function provisionResolvedPaths(array $assetsPaths, $design);
+    public function provisionResolvedPaths(array $assetsPaths, string $design): array;
 }

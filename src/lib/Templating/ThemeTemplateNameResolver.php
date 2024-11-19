@@ -17,16 +17,16 @@ class ThemeTemplateNameResolver implements TemplateNameResolverInterface
     /**
      * Collection of already resolved template names.
      *
-     * @var array
+     * @var array<string, string>
      */
-    private $resolvedTemplateNames = [];
+    private array $resolvedTemplateNames = [];
 
     public function __construct(ConfigResolverInterface $configResolver)
     {
         $this->setConfigResolver($configResolver);
     }
 
-    public function resolveTemplateName($name)
+    public function resolveTemplateName(string $name): string
     {
         if (!$this->isTemplateDesignNamespaced($name)) {
             return $name;
@@ -39,8 +39,9 @@ class ThemeTemplateNameResolver implements TemplateNameResolverInterface
         ));
     }
 
-    public function isTemplateDesignNamespaced($name)
+    public function isTemplateDesignNamespaced(string $name): bool
     {
-        return (strpos($name, '@' . static::DESIGN_NAMESPACE) !== false) || (strpos($name, '@' . $this->getCurrentDesign()) !== false);
+        return str_contains($name, '@' . static::DESIGN_NAMESPACE)
+            || (str_contains($name, '@' . $this->getCurrentDesign()));
     }
 }

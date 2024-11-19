@@ -4,6 +4,7 @@
  * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
+declare(strict_types=1);
 
 namespace Ibexa\DesignEngine\Templating;
 
@@ -19,21 +20,14 @@ interface TemplatePathRegistryInterface
      * @param string $templateName The template logical name
      * @param string $path         Template path
      */
-    public function mapTemplatePath($templateName, $path);
+    public function mapTemplatePath(string $templateName, string $path): void;
 
-    /**
-     * Returns path for given template.
-     *
-     * @param string $templateName
-     *
-     * @return string
-     */
-    public function getTemplatePath($templateName);
+    public function getTemplatePath(string $templateName): string;
 
     /**
      * Returns the whole hash map.
      *
-     * @return array
+     * @return array<string, string>
      */
-    public function getPathMap();
+    public function getPathMap(): array;
 }
