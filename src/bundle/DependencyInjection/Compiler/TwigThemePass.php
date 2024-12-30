@@ -53,7 +53,10 @@ class TwigThemePass implements CompilerPassInterface
 
         $twigLoaderDef = $container->findDefinition(TwigThemeLoader::class);
         // Now look for themes at application level
-        $appLevelThemesDir = $container->getParameter('twig.default_path') . '/themes';
+        $appLevelThemesDir = $container->getParameterBag()->resolveValue(
+            $container->getParameter('twig.default_path') . '/themes'
+        );
+
         if (is_dir($appLevelThemesDir)) {
             foreach ((new Finder())->directories()->in($appLevelThemesDir)->depth('== 0') as $directoryInfo) {
                 $theme = $directoryInfo->getBasename();
