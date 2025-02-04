@@ -19,14 +19,14 @@
     "require": {
         "php": " >=8.3",
         "ibexa/core": "~5.0.x-dev",
-        "symfony/asset": "^5.0",
-        "symfony/config": "^5.0",
-        "symfony/dependency-injection": "^5.0",
-        "symfony/filesystem": "^5.0",
-        "symfony/finder": "^5.0",
-        "symfony/http-foundation": "^5.0",
-        "symfony/http-kernel": "^5.0",
-        "symfony/templating": "^5.0",
+        "symfony/asset": "^6.4",
+        "symfony/config": "^6.4",
+        "symfony/dependency-injection": "^6.4",
+        "symfony/filesystem": "^6.4",
+        "symfony/finder": "^6.4",
+        "symfony/http-foundation": "^6.4",
+        "symfony/http-kernel": "^6.4",
+        "symfony/templating": "^6.4",
         "twig/twig": "^3.0"
     },
     "require-dev": {

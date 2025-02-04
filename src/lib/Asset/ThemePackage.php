@@ -15,15 +15,9 @@ class ThemePackage implements PackageInterface, DesignAwareInterface
 {
     use DesignAwareTrait;
 
-    /**
-     * @var AssetPathResolverInterface
-     */
-    private $pathResolver;
+    private AssetPathResolverInterface $pathResolver;
 
-    /**
-     * @var \Symfony\Component\Asset\PackageInterface
-     */
-    private $innerPackage;
+    private PackageInterface $innerPackage;
 
     public function __construct(AssetPathResolverInterface $pathResolver, PackageInterface $innerPackage)
     {
@@ -31,12 +25,12 @@ class ThemePackage implements PackageInterface, DesignAwareInterface
         $this->innerPackage = $innerPackage;
     }
 
-    public function getUrl($path)
+    public function getUrl(string $path): string
     {
         return $this->innerPackage->getUrl($this->pathResolver->resolveAssetPath($path, $this->getCurrentDesign()));
     }
 
-    public function getVersion($path)
+    public function getVersion(string $path): string
     {
         return $this->innerPackage->getVersion($this->pathResolver->resolveAssetPath($path, $this->getCurrentDesign()));
     }

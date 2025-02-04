@@ -12,20 +12,12 @@ use Psr\Log\LoggerInterface;
 
 class AssetPathResolver implements AssetPathResolverInterface
 {
-    /**
-     * @var array
-     */
-    private $designPaths;
+    /** @var array<string, string> */
+    private array $designPaths;
 
-    /**
-     * @var string
-     */
-    private $webRootDir;
+    private string $webRootDir;
 
-    /**
-     * @var \Psr\Log\LoggerInterface
-     */
-    private $logger;
+    private ?LoggerInterface $logger;
 
     public function __construct(array $designPaths, $webRootDir, LoggerInterface $logger = null)
     {
@@ -34,7 +26,7 @@ class AssetPathResolver implements AssetPathResolverInterface
         $this->logger = $logger;
     }
 
-    public function resolveAssetPath($path, $design)
+    public function resolveAssetPath(string $path, string $design): string
     {
         if (!isset($this->designPaths[$design])) {
             throw new InvalidDesignException("Invalid design '$design'");
@@ -46,14 +38,12 @@ class AssetPathResolver implements AssetPathResolverInterface
             }
         }
 
-        if ($this->logger) {
-            $this->logger->warning(
-                "Asset '$path' cannot be found in any configured themes.\nTried directories: " . implode(
-                    ', ',
-                    array_values($this->designPaths[$design])
-                )
-            );
-        }
+        $this->logger?->warning(
+            "Asset '$path' cannot be found in any configured themes.\nTried directories: " . implode(
+                ', ',
+                array_values($this->designPaths[$design])
+            )
+        );
 
         return $path;
     }

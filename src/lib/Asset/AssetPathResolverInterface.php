@@ -4,6 +4,7 @@
  * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
+declare(strict_types=1);
 
 namespace Ibexa\DesignEngine\Asset;
 
@@ -18,8 +19,6 @@ interface AssetPathResolverInterface
      *
      * @param string $path   Asset path to resolve
      * @param string $design Design to resolve path for
-     *
-     * @return string
      */
-    public function resolveAssetPath($path, $design);
+    public function resolveAssetPath(string $path, string $design): string;
 }

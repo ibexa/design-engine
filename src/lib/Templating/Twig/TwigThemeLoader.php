@@ -22,36 +22,28 @@ class TwigThemeLoader implements LoaderInterface
     /**
      * @var \Ibexa\DesignEngine\Templating\TemplateNameResolverInterface
      */
-    private $nameResolver;
+    private TemplateNameResolverInterface $nameResolver;
 
     /**
      * @var \Ibexa\DesignEngine\Templating\TemplatePathRegistryInterface
      */
-    private $pathRegistry;
+    private TemplatePathRegistryInterface $pathRegistry;
 
-    /**
-     * @var \Twig\Loader\FilesystemLoader
-     */
-    private $innerFilesystemLoader;
+    private FilesystemLoader $innerFilesystemLoader;
 
     public function __construct(
         TemplateNameResolverInterface $templateNameResolver,
         TemplatePathRegistryInterface $templatePathRegistry,
-        LoaderInterface $innerFilesystemLoader
+        FilesystemLoader $innerFilesystemLoader
     ) {
         $this->innerFilesystemLoader = $innerFilesystemLoader;
         $this->nameResolver = $templateNameResolver;
         $this->pathRegistry = $templatePathRegistry;
     }
 
-    public function exists($name)
+    public function exists(string $name): bool
     {
         return $this->innerFilesystemLoader->exists($this->nameResolver->resolveTemplateName($name));
-    }
-
-    public function getSource($name)
-    {
-        return $this->innerFilesystemLoader->getSource($this->nameResolver->resolveTemplateName($name));
     }
 
     public function getSourceContext(string $name): Source
@@ -72,27 +64,36 @@ class TwigThemeLoader implements LoaderInterface
         return $this->innerFilesystemLoader->isFresh($this->nameResolver->resolveTemplateName($name), $time);
     }
 
-    public function getPaths($namespace = FilesystemLoader::MAIN_NAMESPACE)
+    public function getPaths(string $namespace = FilesystemLoader::MAIN_NAMESPACE): array
     {
         return $this->innerFilesystemLoader->getPaths($namespace);
     }
 
-    public function getNamespaces()
+    public function getNamespaces(): array
     {
         return $this->innerFilesystemLoader->getNamespaces();
     }
 
-    public function setPaths($paths, $namespace = FilesystemLoader::MAIN_NAMESPACE)
+    /**
+     * @param string|string[] $paths
+     */
+    public function setPaths(string|array $paths, $namespace = FilesystemLoader::MAIN_NAMESPACE): void
     {
         $this->innerFilesystemLoader->setPaths($paths, $namespace);
     }
 
-    public function addPath($path, $namespace = FilesystemLoader::MAIN_NAMESPACE)
+    /**
+     * @throws \Twig\Error\LoaderError
+     */
+    public function addPath(string $path, string $namespace = FilesystemLoader::MAIN_NAMESPACE): void
     {
         $this->innerFilesystemLoader->addPath($path, $namespace);
     }
 
-    public function prependPath($path, $namespace = FilesystemLoader::MAIN_NAMESPACE)
+    /**
+     * @throws \Twig\Error\LoaderError
+     */
+    public function prependPath(string $path, string $namespace = FilesystemLoader::MAIN_NAMESPACE): void
     {
         $this->innerFilesystemLoader->prependPath($path, $namespace);
     }

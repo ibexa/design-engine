@@ -12,37 +12,36 @@ use Serializable;
 class TemplatePathRegistry implements TemplatePathRegistryInterface, Serializable
 {
     /** @var array<string, string> */
-    private $pathMap = [];
+    private array $pathMap = [];
 
-    /** @var string */
-    private $kernelRootDir;
+    private string $kernelRootDir;
 
     public function __construct($kernelRootDir)
     {
         $this->kernelRootDir = $kernelRootDir;
     }
 
-    public function mapTemplatePath($templateName, $path)
+    public function mapTemplatePath(string $templateName, string $path): void
     {
         $this->pathMap[$templateName] = str_replace($this->kernelRootDir . '/', '', $path);
     }
 
-    public function getTemplatePath($templateName)
+    public function getTemplatePath(string $templateName): string
     {
-        return isset($this->pathMap[$templateName]) ? $this->pathMap[$templateName] : $templateName;
+        return $this->pathMap[$templateName] ?? $templateName;
     }
 
-    public function getPathMap()
+    public function getPathMap(): array
     {
         return $this->pathMap;
     }
 
-    public function serialize()
+    public function serialize(): ?string
     {
         return serialize([$this->pathMap, $this->kernelRootDir]);
     }
 
-    public function unserialize($serialized)
+    public function unserialize($serialized): void
     {
         [$this->pathMap, $this->kernelRootDir] = unserialize($serialized);
     }

@@ -13,22 +13,24 @@ use Symfony\Component\Config\Definition\Builder\NodeBuilder;
 
 class DesignConfigParser implements ParserInterface
 {
-    public function mapConfig(array &$scopeSettings, $currentScope, ContextualizerInterface $contextualizer)
+    public function mapConfig(array &$scopeSettings, $currentScope, ContextualizerInterface $contextualizer): void
     {
         if (isset($scopeSettings['design'])) {
             $contextualizer->setContextualParameter('design', $currentScope, $scopeSettings['design']);
         }
     }
 
-    public function preMap(array $config, ContextualizerInterface $contextualizer)
+    public function preMap(array $config, ContextualizerInterface $contextualizer): void
     {
+        // Nothing to map
     }
 
-    public function postMap(array $config, ContextualizerInterface $contextualizer)
+    public function postMap(array $config, ContextualizerInterface $contextualizer): void
     {
+        // Nothing to map
     }
 
-    public function addSemanticConfig(NodeBuilder $nodeBuilder)
+    public function addSemanticConfig(NodeBuilder $nodeBuilder): void
     {
         $nodeBuilder
             ->scalarNode('design')

@@ -15,7 +15,7 @@ use Symfony\Component\Finder\Finder;
 
 class AssetThemePass implements CompilerPassInterface
 {
-    public function process(ContainerBuilder $container)
+    public function process(ContainerBuilder $container): void
     {
         if (!($container->hasParameter('kernel.bundles') && $container->hasParameter('webroot_dir') && $container->hasDefinition('assets.packages'))) {
             return;
@@ -50,7 +50,7 @@ class AssetThemePass implements CompilerPassInterface
         if (is_dir($appLevelThemeDir)) {
             foreach ((new Finder())->directories()->in($appLevelThemeDir)->depth('== 0') as $directoryInfo) {
                 $theme = $directoryInfo->getBasename();
-                $themePaths = isset($themesPathMap[$theme]) ? $themesPathMap[$theme] : [];
+                $themePaths = $themesPathMap[$theme] ?? [];
                 // Application level paths are always top priority.
                 array_unshift($themePaths, 'assets/themes/' . $theme);
                 $themesPathMap[$theme] = $themePaths;

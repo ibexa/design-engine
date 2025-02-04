@@ -16,7 +16,7 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
 class IbexaDesignEngineExtension extends Extension
 {
-    public const EXTENSION_NAME = 'ibexa_design_engine';
+    public const string EXTENSION_NAME = 'ibexa_design_engine';
 
     public function getAlias(): string
     {
@@ -28,20 +28,24 @@ class IbexaDesignEngineExtension extends Extension
         return new Configuration();
     }
 
-    public function load(array $configs, ContainerBuilder $container)
+    /**
+     * @throws \Exception
+     */
+    public function load(array $configs, ContainerBuilder $container): void
     {
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.yaml');
         $loader->load('default_settings.yaml');
 
         $configuration = $this->getConfiguration($configs, $container);
+        assert(null !== $configuration);
         $config = $this->processConfiguration($configuration, $configs);
         $processor = new ConfigurationProcessor($container, 'ezdesign');
 
         $this->configureDesigns($config, $processor, $container);
     }
 
-    private function configureDesigns(array $config, ConfigurationProcessor $processor, ContainerBuilder $container)
+    private function configureDesigns(array $config, ConfigurationProcessor $processor, ContainerBuilder $container): void
     {
         // Always add "standard" design to the list (defaults to application level & override paths only)
         $config['design_list'] += ['standard' => []];

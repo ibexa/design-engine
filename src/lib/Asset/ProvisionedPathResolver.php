@@ -12,19 +12,13 @@ use Symfony\Component\Finder\Finder;
 class ProvisionedPathResolver implements AssetPathResolverInterface, AssetPathProvisionerInterface
 {
     /**
-     * @var array
+     * @var array<string, array<string, string>>
      */
-    private $resolvedPaths;
+    private array $resolvedPaths;
 
-    /**
-     * @var AssetPathResolverInterface
-     */
-    private $innerResolver;
+    private AssetPathResolverInterface $innerResolver;
 
-    /**
-     * @var string
-     */
-    private $webRootDir;
+    private string $webRootDir;
 
     public function __construct(array $resolvedPaths, AssetPathResolverInterface $innerResolver, $webRootDir)
     {
@@ -39,22 +33,19 @@ class ProvisionedPathResolver implements AssetPathResolverInterface, AssetPathPr
      *
      * {@inheritdoc}
      */
-    public function resolveAssetPath($path, $design)
+    public function resolveAssetPath(string $path, string $design): string
     {
-        if (!isset($this->resolvedPaths[$design][$path])) {
-            return $this->innerResolver->resolveAssetPath($path, $design);
-        }
-
-        return $this->resolvedPaths[$design][$path];
+        return $this->resolvedPaths[$design][$path] ?? $this->innerResolver->resolveAssetPath($path, $design);
     }
 
-    public function provisionResolvedPaths(array $assetsPaths, $design)
+    public function provisionResolvedPaths(array $assetsPaths, string $design): array
     {
         $webrootDir = $this->webRootDir;
         $assetsLogicalPaths = [];
         foreach ($assetsPaths as $path) {
-            $themePath = "$webrootDir/$path";
-            $assetsLogicalPaths = array_merge($assetsLogicalPaths, $this->computeLogicalPathFromPhysicalAssets($themePath));
+            foreach ($this->computeLogicalPathFromPhysicalAssets("$webrootDir/$path") as $logicalPath) {
+                $assetsLogicalPaths[] = $logicalPath;
+            }
         }
 
         $resolvedPaths = [];
@@ -72,11 +63,9 @@ class ProvisionedPathResolver implements AssetPathResolverInterface, AssetPathPr
      * This exclusion mainly applies to override directories,
      * e.g. "assets/", which is both an override dir and where app level themes can be defined.
      *
-     * @param string $themePath
-     *
-     * @return array
+     * @phpstan-return list<string>
      */
-    private function computeLogicalPathFromPhysicalAssets($themePath)
+    private function computeLogicalPathFromPhysicalAssets(string $themePath): array
     {
         if (!is_dir($themePath)) {
             return [];

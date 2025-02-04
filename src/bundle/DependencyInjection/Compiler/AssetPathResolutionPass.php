@@ -23,7 +23,10 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
  */
 class AssetPathResolutionPass implements CompilerPassInterface
 {
-    public function process(ContainerBuilder $container)
+    /**
+     * @throws \Exception
+     */
+    public function process(ContainerBuilder $container): void
     {
         if ($container->getParameter('ibexa.design.assets.resolution.disabled')) {
             return;
@@ -39,7 +42,7 @@ class AssetPathResolutionPass implements CompilerPassInterface
         $container->setAlias('ibexadesign.asset_path_resolver', new Alias(ProvisionedPathResolver::class));
     }
 
-    private function preResolveAssetsPaths(AssetPathProvisionerInterface $provisioner, array $designPathMap)
+    private function preResolveAssetsPaths(AssetPathProvisionerInterface $provisioner, array $designPathMap): array
     {
         $resolvedPathsByDesign = [];
         foreach ($designPathMap as $design => $paths) {

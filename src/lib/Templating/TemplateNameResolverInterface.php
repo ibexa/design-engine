@@ -16,26 +16,14 @@ use Ibexa\Contracts\DesignEngine\DesignAwareInterface;
 interface TemplateNameResolverInterface extends DesignAwareInterface
 {
     /**
-     * @deprecated since Ibexa 4.0. Use
-     * {@see \Ibexa\Contracts\DesignEngine\DesignAwareInterface::DESIGN_NAMESPACE} instead.
-     */
-    public const EZ_DESIGN_NAMESPACE = 'ezdesign';
-
-    /**
      * Resolves provided template name within current design and returns properly namespaced template name.
      *
      * @param string $name Template name to resolve
-     *
-     * @return string
      */
-    public function resolveTemplateName($name);
+    public function resolveTemplateName(string $name): string;
 
     /**
-     * Checks if provided template name is using @ibexadesign namespace.
-     *
-     * @param string $name
-     *
-     * @return bool
+     * Checks if provided template name is using `@ibexadesign` namespace.
      */
-    public function isTemplateDesignNamespaced($name);
+    public function isTemplateDesignNamespaced(string $name): bool;
 }
