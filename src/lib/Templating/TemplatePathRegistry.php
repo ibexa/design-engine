@@ -16,7 +16,7 @@ class TemplatePathRegistry implements TemplatePathRegistryInterface, Serializabl
 
     private string $kernelRootDir;
 
-    public function __construct($kernelRootDir)
+    public function __construct(string $kernelRootDir)
     {
         $this->kernelRootDir = $kernelRootDir;
     }

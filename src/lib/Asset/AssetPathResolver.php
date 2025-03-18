@@ -19,7 +19,7 @@ class AssetPathResolver implements AssetPathResolverInterface
 
     private ?LoggerInterface $logger;
 
-    public function __construct(array $designPaths, $webRootDir, LoggerInterface $logger = null)
+    public function __construct(array $designPaths, string $webRootDir, LoggerInterface $logger = null)
     {
         $this->designPaths = $designPaths;
         $this->webRootDir = $webRootDir;

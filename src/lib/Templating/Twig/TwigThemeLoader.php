@@ -77,7 +77,7 @@ class TwigThemeLoader implements LoaderInterface
     /**
      * @param string|string[] $paths
      */
-    public function setPaths(string|array $paths, $namespace = FilesystemLoader::MAIN_NAMESPACE): void
+    public function setPaths(string|array $paths, string $namespace = FilesystemLoader::MAIN_NAMESPACE): void
     {
         $this->innerFilesystemLoader->setPaths($paths, $namespace);
     }

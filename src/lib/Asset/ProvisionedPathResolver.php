@@ -20,7 +20,7 @@ class ProvisionedPathResolver implements AssetPathResolverInterface, AssetPathPr
 
     private string $webRootDir;
 
-    public function __construct(array $resolvedPaths, AssetPathResolverInterface $innerResolver, $webRootDir)
+    public function __construct(array $resolvedPaths, AssetPathResolverInterface $innerResolver, string $webRootDir)
     {
         $this->resolvedPaths = $resolvedPaths;
         $this->innerResolver = $innerResolver;

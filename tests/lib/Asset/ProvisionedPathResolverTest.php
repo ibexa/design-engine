@@ -11,6 +11,7 @@ use Ibexa\DesignEngine\Asset\AssetPathResolver;
 use Ibexa\DesignEngine\Asset\AssetPathResolverInterface;
 use Ibexa\DesignEngine\Asset\ProvisionedPathResolver;
 use org\bovigo\vfs\vfsStream;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class ProvisionedPathResolverTest extends TestCase
@@ -18,7 +19,7 @@ class ProvisionedPathResolverTest extends TestCase
     /**
      * @var \PHPUnit\Framework\MockObject\MockObject|\Ibexa\DesignEngine\Asset\AssetPathResolverInterface
      */
-    private $innerResolver;
+    private MockObject $innerResolver;
 
     /**
      * @var \org\bovigo\vfs\vfsStreamDirectory
@@ -32,7 +33,7 @@ class ProvisionedPathResolverTest extends TestCase
         $this->webrootDir = vfsStream::setup('web');
     }
 
-    public function testResolvePathNotProvisioned()
+    public function testResolvePathNotProvisioned(): void
     {
         $assetLogicalPath = 'images/some_image.jpg';
         $design = 'foo';
@@ -51,7 +52,7 @@ class ProvisionedPathResolverTest extends TestCase
         self::assertSame($expected, $resolver->resolveAssetPath($assetLogicalPath, $design));
     }
 
-    public function testResolveProvisionedPath()
+    public function testResolveProvisionedPath(): void
     {
         $expected = 'some/path/images/some_image.jpg';
         $assetLogicalPath = 'images/some_image.jpg';
@@ -64,7 +65,7 @@ class ProvisionedPathResolverTest extends TestCase
         self::assertSame($expected, $resolver->resolveAssetPath($assetLogicalPath, $design));
     }
 
-    public function testProvisionResolvedPaths()
+    public function testProvisionResolvedPaths(): void
     {
         $design = 'some_design';
         $themesPaths = [
