@@ -12,12 +12,12 @@ use PHPUnit\Framework\TestCase;
 
 class TemplatePathRegistryTest extends TestCase
 {
-    private function getExpectedRelativePath($templateFullPath, $kernelRootDir)
+    private function getExpectedRelativePath(string $templateFullPath, string $kernelRootDir): string
     {
         return str_replace($kernelRootDir . '/', '', $templateFullPath);
     }
 
-    public function testMapTemplatePath()
+    public function testMapTemplatePath(): void
     {
         $kernelRootDir = __DIR__;
         $templateLogicalName = '@foo/bar.html.twig';
@@ -32,7 +32,7 @@ class TemplatePathRegistryTest extends TestCase
         );
     }
 
-    public function testGetTemplatePath()
+    public function testGetTemplatePath(): void
     {
         $kernelRootDir = __DIR__;
         $templateLogicalName = '@foo/bar.html.twig';
@@ -46,7 +46,7 @@ class TemplatePathRegistryTest extends TestCase
         );
     }
 
-    public function testGetTemplatePathNotMapped()
+    public function testGetTemplatePathNotMapped(): void
     {
         $kernelRootDir = __DIR__;
         $templateLogicalName = '@foo/bar.html.twig';

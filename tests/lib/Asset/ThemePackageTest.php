@@ -10,25 +10,17 @@ namespace Ibexa\Tests\DesignEngine\Asset;
 use Ibexa\Contracts\Core\SiteAccess\ConfigResolverInterface;
 use Ibexa\DesignEngine\Asset\AssetPathResolverInterface;
 use Ibexa\DesignEngine\Asset\ThemePackage;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Asset\PackageInterface;
 
 class ThemePackageTest extends TestCase
 {
-    /**
-     * @var \PHPUnit\Framework\MockObject\MockObject|\Ibexa\DesignEngine\Asset\AssetPathResolverInterface
-     */
-    private $assetPathResolver;
+    private AssetPathResolverInterface&MockObject $assetPathResolver;
 
-    /**
-     * @var \PHPUnit\Framework\MockObject\MockObject|\Symfony\Component\Asset\PackageInterface
-     */
-    private $innerPackage;
+    private PackageInterface&MockObject $innerPackage;
 
-    /**
-     * @var \PHPUnit\Framework\MockObject\MockObject|\Ibexa\Contracts\Core\SiteAccess\ConfigResolverInterface
-     */
-    private $configResolver;
+    private ConfigResolverInterface&MockObject $configResolver;
 
     protected function setUp(): void
     {
@@ -39,7 +31,7 @@ class ThemePackageTest extends TestCase
         $this->configResolver = $this->createMock(ConfigResolverInterface::class);
     }
 
-    public function testGetUrl()
+    public function testGetUrl(): void
     {
         $assetPath = 'images/foo.png';
         $fullAssetPath = 'assets/' . $assetPath;
@@ -65,7 +57,7 @@ class ThemePackageTest extends TestCase
         self::assertSame("/$fullAssetPath", $package->getUrl($assetPath));
     }
 
-    public function testGetVersion()
+    public function testGetVersion(): void
     {
         $assetPath = 'images/foo.png';
         $fullAssetPath = 'assets/' . $assetPath;

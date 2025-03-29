@@ -15,7 +15,7 @@ use Psr\Log\LoggerInterface;
 
 class AssetPathResolverTest extends TestCase
 {
-    public function testResolveAssetPathFail()
+    public function testResolveAssetPathFail(): void
     {
         $logger = $this->createMock(LoggerInterface::class);
         $logger
@@ -30,7 +30,7 @@ class AssetPathResolverTest extends TestCase
     /**
      * @covers \Ibexa\DesignEngine\Asset\AssetPathResolver::resolveAssetPath
      */
-    public function testResolveInvalidDesign()
+    public function testResolveInvalidDesign(): void
     {
         $resolver = new AssetPathResolver([], __DIR__);
         $assetPath = 'images/foo.png';
@@ -38,7 +38,7 @@ class AssetPathResolverTest extends TestCase
         self::assertSame($assetPath, $resolver->resolveAssetPath($assetPath, 'foo'));
     }
 
-    public function resolveAssetPathProvider()
+    public function resolveAssetPathProvider(): array
     {
         return [
             [
@@ -107,7 +107,7 @@ class AssetPathResolverTest extends TestCase
     /**
      * @dataProvider resolveAssetPathProvider
      */
-    public function testResolveAssetPath(array $designPaths, array $existingPaths, $path, $resolvedPath)
+    public function testResolveAssetPath(array $designPaths, array $existingPaths, string $path, string $resolvedPath): void
     {
         $webrootDir = vfsStream::setup('web');
         foreach ($designPaths['foo'] as $designPath) {

@@ -9,14 +9,12 @@ namespace Ibexa\Tests\DesignEngine\Templating;
 
 use Ibexa\Contracts\Core\SiteAccess\ConfigResolverInterface;
 use Ibexa\DesignEngine\Templating\ThemeTemplateNameResolver;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class ThemeTemplateNameResolverTest extends TestCase
 {
-    /**
-     * @var \PHPUnit\Framework\MockObject\MockObject|\Ibexa\Contracts\Core\SiteAccess\ConfigResolverInterface
-     */
-    private $configResolver;
+    private ConfigResolverInterface&MockObject $configResolver;
 
     protected function setUp(): void
     {
@@ -25,7 +23,7 @@ class ThemeTemplateNameResolverTest extends TestCase
         $this->configResolver = $this->createMock(ConfigResolverInterface::class);
     }
 
-    public function templateNameProvider()
+    public function templateNameProvider(): array
     {
         return [
             [null, 'foo.html.twig', 'foo.html.twig'],
@@ -37,7 +35,7 @@ class ThemeTemplateNameResolverTest extends TestCase
     /**
      * @dataProvider templateNameProvider
      */
-    public function testResolveTemplateName($currentDesign, $templateName, $expectedTemplateName)
+    public function testResolveTemplateName(?string $currentDesign, string $templateName, string $expectedTemplateName): void
     {
         $this->configResolver
             ->method('getParameter')
@@ -47,7 +45,7 @@ class ThemeTemplateNameResolverTest extends TestCase
         self::assertSame($expectedTemplateName, $resolver->resolveTemplateName($templateName));
     }
 
-    public function isTemplateDesignNamespacedProvider()
+    public function isTemplateDesignNamespacedProvider(): array
     {
         return [
             [null, 'foo.html.twig', false],
@@ -60,7 +58,7 @@ class ThemeTemplateNameResolverTest extends TestCase
     /**
      * @dataProvider isTemplateDesignNamespacedProvider
      */
-    public function testIsTemplateDesignNamespaced($currentDesign, $templateName, $expected)
+    public function testIsTemplateDesignNamespaced(?string $currentDesign, string $templateName, bool $expected): void
     {
         $this->configResolver
             ->method('getParameter')
