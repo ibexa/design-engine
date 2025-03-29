@@ -16,20 +16,11 @@ use Symfony\Component\Asset\PackageInterface;
 
 class ThemePackageTest extends TestCase
 {
-    /**
-     * @var \PHPUnit\Framework\MockObject\MockObject|\Ibexa\DesignEngine\Asset\AssetPathResolverInterface
-     */
-    private MockObject $assetPathResolver;
+    private AssetPathResolverInterface&MockObject $assetPathResolver;
 
-    /**
-     * @var \PHPUnit\Framework\MockObject\MockObject|\Symfony\Component\Asset\PackageInterface
-     */
-    private MockObject $innerPackage;
+    private PackageInterface&MockObject $innerPackage;
 
-    /**
-     * @var \PHPUnit\Framework\MockObject\MockObject|\Ibexa\Contracts\Core\SiteAccess\ConfigResolverInterface
-     */
-    private MockObject $configResolver;
+    private ConfigResolverInterface&MockObject $configResolver;
 
     protected function setUp(): void
     {

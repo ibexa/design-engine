@@ -14,10 +14,7 @@ use PHPUnit\Framework\TestCase;
 
 class ThemeTemplateNameResolverTest extends TestCase
 {
-    /**
-     * @var \PHPUnit\Framework\MockObject\MockObject|\Ibexa\Contracts\Core\SiteAccess\ConfigResolverInterface
-     */
-    private MockObject $configResolver;
+    private ConfigResolverInterface&MockObject $configResolver;
 
     protected function setUp(): void
     {
