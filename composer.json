@@ -18,7 +18,7 @@
     ],
     "require": {
         "php": " >=8.3",
-        "ibexa/core": "~5.0.x-dev",
+        "ibexa/core": "~5.0@rc",
         "symfony/asset": "^7.2",
         "symfony/config": "^7.2",
         "symfony/dependency-injection": "^7.2",
@@ -31,8 +31,8 @@
     },
     "require-dev": {
         "ibexa/code-style": "~2.0.0",
-        "ibexa/doctrine-schema": "~5.0.x-dev",
-        "ibexa/rector": "~5.0.x-dev",
+        "ibexa/doctrine-schema": "~5.0@rc",
+        "ibexa/rector": "~5.0@rc",
         "mikey179/vfsstream": "^1.6",
         "phpunit/phpunit": "^9.6"
     },
