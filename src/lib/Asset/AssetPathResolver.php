@@ -12,18 +12,14 @@ use Psr\Log\LoggerInterface;
 
 class AssetPathResolver implements AssetPathResolverInterface
 {
-    /** @var array<string, string> */
-    private array $designPaths;
-
-    private string $webRootDir;
-
-    private ?LoggerInterface $logger;
-
-    public function __construct(array $designPaths, string $webRootDir, LoggerInterface $logger = null)
-    {
-        $this->designPaths = $designPaths;
-        $this->webRootDir = $webRootDir;
-        $this->logger = $logger;
+    /**
+     * @param array<string, array<int, string>> $designPaths
+     */
+    public function __construct(
+        private readonly array $designPaths,
+        private readonly string $webRootDir,
+        private readonly ?LoggerInterface $logger = null
+    ) {
     }
 
     public function resolveAssetPath(string $path, string $design): string

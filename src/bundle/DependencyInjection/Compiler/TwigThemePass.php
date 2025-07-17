@@ -33,13 +33,15 @@ class TwigThemePass implements CompilerPassInterface
         }
 
         $themesPathMap = [
-            '_override' => $container->getParameter('ibexa.design.templates.override_paths'),
+            '_override' => (array)$container->getParameter('ibexa.design.templates.override_paths'),
         ];
         $finder = new Finder();
         // Look for themes in bundles.
-        foreach ($container->getParameter('kernel.bundles') as $bundleName => $bundleClass) {
+        foreach ((array)$container->getParameter('kernel.bundles') as $bundleName => $bundleClass) {
             $bundleReflection = new ReflectionClass($bundleClass);
-            $bundleViewsDir = \dirname($bundleReflection->getFileName()) . '/Resources/views';
+            $filename = $bundleReflection->getFileName();
+            assert(is_string($filename));
+            $bundleViewsDir = \dirname($filename) . '/Resources/views';
             $themeDir = $bundleViewsDir . '/themes';
             if (!is_dir($themeDir)) {
                 continue;
@@ -53,9 +55,9 @@ class TwigThemePass implements CompilerPassInterface
 
         $twigLoaderDef = $container->findDefinition(TwigThemeLoader::class);
         // Now look for themes at application level
-        $appLevelThemesDir = $container->getParameterBag()->resolveValue(
-            $container->getParameter('twig.default_path') . '/themes'
-        );
+        $twigDefaultPath = $container->getParameter('twig.default_path');
+        assert(is_string($twigDefaultPath));
+        $appLevelThemesDir = $container->getParameterBag()->resolveValue($twigDefaultPath . '/themes');
 
         if (is_dir($appLevelThemesDir)) {
             foreach ((new Finder())->directories()->in($appLevelThemesDir)->depth('== 0') as $directoryInfo) {
@@ -69,14 +71,17 @@ class TwigThemePass implements CompilerPassInterface
 
         // Now merge with already configured template theme paths
         // Template theme paths defined via config will always have less priority than convention based paths
-        $themesPathMap = array_merge_recursive($themesPathMap, $container->getParameter('ibexa.design.templates.path_map'));
+        $themesPathMap = array_merge_recursive(
+            $themesPathMap,
+            (array)$container->getParameter('ibexa.design.templates.path_map'),
+        );
 
         // De-duplicate the map
         foreach ($themesPathMap as $theme => &$paths) {
             $paths = array_unique($paths);
         }
 
-        foreach ($container->getParameter('ibexa.design.list') as $designName => $themeFallback) {
+        foreach ((array)$container->getParameter('ibexa.design.list') as $designName => $themeFallback) {
             // Always add _override theme first.
             array_unshift($themeFallback, '_override');
             foreach ($themeFallback as $theme) {
@@ -91,7 +96,7 @@ class TwigThemePass implements CompilerPassInterface
             }
         }
 
-        $themesList = $container->getParameter('ibexa.design.themes.list');
+        $themesList = (array)$container->getParameter('ibexa.design.themes.list');
         $container->setParameter(
             'ibexa.design.themes.list',
             array_unique(

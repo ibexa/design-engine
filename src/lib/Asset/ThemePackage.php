@@ -15,23 +15,25 @@ class ThemePackage implements PackageInterface, DesignAwareInterface
 {
     use DesignAwareTrait;
 
-    private AssetPathResolverInterface $pathResolver;
-
-    private PackageInterface $innerPackage;
-
-    public function __construct(AssetPathResolverInterface $pathResolver, PackageInterface $innerPackage)
-    {
-        $this->pathResolver = $pathResolver;
-        $this->innerPackage = $innerPackage;
+    public function __construct(
+        private AssetPathResolverInterface $pathResolver,
+        private PackageInterface $innerPackage
+    ) {
     }
 
     public function getUrl(string $path): string
     {
-        return $this->innerPackage->getUrl($this->pathResolver->resolveAssetPath($path, $this->getCurrentDesign()));
+        $currentDesign = $this->getCurrentDesign();
+        assert(is_string($currentDesign));
+
+        return $this->innerPackage->getUrl($this->pathResolver->resolveAssetPath($path, $currentDesign));
     }
 
     public function getVersion(string $path): string
     {
-        return $this->innerPackage->getVersion($this->pathResolver->resolveAssetPath($path, $this->getCurrentDesign()));
+        $currentDesign = $this->getCurrentDesign();
+        assert(is_string($currentDesign));
+
+        return $this->innerPackage->getVersion($this->pathResolver->resolveAssetPath($path, $currentDesign));
     }
 }

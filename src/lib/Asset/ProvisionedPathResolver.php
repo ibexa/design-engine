@@ -9,29 +9,21 @@ namespace Ibexa\DesignEngine\Asset;
 
 use Symfony\Component\Finder\Finder;
 
-class ProvisionedPathResolver implements AssetPathResolverInterface, AssetPathProvisionerInterface
+readonly class ProvisionedPathResolver implements AssetPathResolverInterface, AssetPathProvisionerInterface
 {
     /**
-     * @var array<string, array<string, string>>
+     * @param array<string, array<string, string>> $resolvedPaths
      */
-    private array $resolvedPaths;
-
-    private AssetPathResolverInterface $innerResolver;
-
-    private string $webRootDir;
-
-    public function __construct(array $resolvedPaths, AssetPathResolverInterface $innerResolver, string $webRootDir)
-    {
-        $this->resolvedPaths = $resolvedPaths;
-        $this->innerResolver = $innerResolver;
-        $this->webRootDir = $webRootDir;
+    public function __construct(
+        private array $resolvedPaths,
+        private AssetPathResolverInterface $innerResolver,
+        private string $webRootDir
+    ) {
     }
 
     /**
      * Looks for $path within pre-resolved paths for provided design.
      * If it cannot be found, fallbacks to original resolver.
-     *
-     * {@inheritdoc}
      */
     public function resolveAssetPath(string $path, string $design): string
     {

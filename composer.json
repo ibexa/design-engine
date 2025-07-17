@@ -34,6 +34,9 @@
         "ibexa/doctrine-schema": "~5.0.x-dev",
         "ibexa/rector": "~5.0.x-dev",
         "mikey179/vfsstream": "^1.6",
+        "phpstan/phpstan": "^2.0",
+        "phpstan/phpstan-phpunit": "^2.0",
+        "phpstan/phpstan-symfony": "^2.0",
         "phpunit/phpunit": "^9.6"
     },
     "autoload": {
@@ -52,7 +55,8 @@
     "scripts": {
         "fix-cs": "php-cs-fixer fix --config=.php-cs-fixer.php -v --show-progress=dots",
         "check-cs": "@fix-cs --dry-run",
-        "test": "phpunit"
+        "test": "phpunit",
+        "phpstan": "phpstan analyse"
     },
     "extra": {
         "branch-alias": {

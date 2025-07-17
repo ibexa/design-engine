@@ -1,0 +1,31 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Class Ibexa\\Bundle\\DesignEngine\\DataCollector\\TwigDataCollector extends @final class Symfony\\Bridge\\Twig\\DataCollector\\TwigDataCollector\.$#'
+			identifier: class.extendsFinalByPhpDoc
+			count: 1
+			path: src/bundle/DataCollector/TwigDataCollector.php
+
+		-
+			message: '#^Parameter \#1 \$provisioner of method Ibexa\\Bundle\\DesignEngine\\DependencyInjection\\Compiler\\AssetPathResolutionPass\:\:preResolveAssetsPaths\(\) expects Ibexa\\DesignEngine\\Asset\\AssetPathProvisionerInterface, object given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/bundle/DependencyInjection/Compiler/AssetPathResolutionPass.php
+
+		-
+			message: '#^Parameter \#2 \$designPathMap of method Ibexa\\Bundle\\DesignEngine\\DependencyInjection\\Compiler\\AssetPathResolutionPass\:\:preResolveAssetsPaths\(\) expects array\<string, list\<string\>\>, array\|bool\|float\|int\|string\|null given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/bundle/DependencyInjection/Compiler/AssetPathResolutionPass.php
+
+		-
+			message: '#^Parameter \#3 \$length of function substr expects int\|null, int\|false given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/bundle/DependencyInjection/Compiler/AssetThemePass.php
+
+		-
+			message: '#^PHPDoc tag @var with type SplFileInfo is not subtype of native type Symfony\\Component\\Finder\\SplFileInfo\.$#'
+			identifier: varTag.nativeType
+			count: 1
+			path: src/lib/Asset/ProvisionedPathResolver.php

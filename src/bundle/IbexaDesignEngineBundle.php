@@ -34,12 +34,13 @@ class IbexaDesignEngineBundle extends Bundle
         $container->addCompilerPass(new AssetPathResolutionPass(), PassConfig::TYPE_OPTIMIZE);
     }
 
+    #[\Override]
     public function getContainerExtension(): ?ExtensionInterface
     {
         if (!isset($this->extension)) {
             $this->extension = new IbexaDesignEngineExtension();
         }
 
-        return $this->extension;
+        return $this->extension === false ? null : $this->extension;
     }
 }

@@ -14,29 +14,30 @@ use Twig\Profiler\Profile;
 
 class TwigDataCollector extends BaseCollector
 {
-    private TemplatePathRegistryInterface $templatePathRegistry;
-
-    public function __construct(Profile $profile, Environment $environment, TemplatePathRegistryInterface $templatePathRegistry)
-    {
+    public function __construct(
+        Profile $profile,
+        Environment $environment,
+        private TemplatePathRegistryInterface $templatePathRegistry
+    ) {
         parent::__construct($profile, $environment);
-        $this->templatePathRegistry = $templatePathRegistry;
     }
 
-    private function getTemplatePathRegistry()
+    private function getTemplatePathRegistry(): TemplatePathRegistryInterface
     {
-        if (!isset($this->templatePathRegistry)) {
-            $this->templatePathRegistry = unserialize($this->data['template_path_registry']);
-        }
-
         return $this->templatePathRegistry;
     }
 
+    #[\Override]
     public function lateCollect(): void
     {
         parent::lateCollect();
         $this->data['template_path_registry'] = serialize($this->templatePathRegistry);
     }
 
+    /**
+     * @return array<string, int>
+     */
+    #[\Override]
     public function getTemplates(): array
     {
         $registry = $this->getTemplatePathRegistry();

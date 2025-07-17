@@ -14,7 +14,7 @@ interface AssetPathProvisionerInterface
      * Returns a map with asset logical path as key and its resolved path (relative to webroot dir) as value.
      * Example => ['images/foo.png' => 'asset/themes/some_theme/images/foo.png'].
      *
-     * @param string[] $assetsPaths
+     * @param list<string> $assetsPaths
      *
      * @return array<string, string>
      */
