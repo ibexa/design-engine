@@ -15,9 +15,9 @@ readonly class ProvisionedPathResolver implements AssetPathResolverInterface, As
      * @param array<string, array<string, string>> $resolvedPaths
      */
     public function __construct(
-        private array                      $resolvedPaths,
+        private array $resolvedPaths,
         private AssetPathResolverInterface $innerResolver,
-        private string                     $webRootDir
+        private string $webRootDir
     ) {
     }
 

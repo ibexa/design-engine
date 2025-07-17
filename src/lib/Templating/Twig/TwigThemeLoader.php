@@ -22,7 +22,7 @@ readonly class TwigThemeLoader implements LoaderInterface
     public function __construct(
         private TemplateNameResolverInterface $nameResolver,
         private TemplatePathRegistryInterface $pathRegistry,
-        private FilesystemLoader              $innerFilesystemLoader
+        private FilesystemLoader $innerFilesystemLoader
     ) {
     }
 
