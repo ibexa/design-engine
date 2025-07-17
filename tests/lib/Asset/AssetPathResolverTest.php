@@ -38,6 +38,14 @@ class AssetPathResolverTest extends TestCase
         self::assertSame($assetPath, $resolver->resolveAssetPath($assetPath, 'foo'));
     }
 
+    /**
+     * @return list<array{
+     *     0: array{foo: list<string>},
+     *     1: list<string>,
+     *     2: string,
+     *     3: string
+     * }>
+     */
     public function resolveAssetPathProvider(): array
     {
         return [
@@ -106,6 +114,9 @@ class AssetPathResolverTest extends TestCase
 
     /**
      * @dataProvider resolveAssetPathProvider
+     *
+     * @param array{foo: array<string>} $designPaths
+     * @param list<string> $existingPaths
      */
     public function testResolveAssetPath(array $designPaths, array $existingPaths, string $path, string $resolvedPath): void
     {

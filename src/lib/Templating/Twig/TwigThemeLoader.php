@@ -19,26 +19,11 @@ use Twig\Source;
  */
 class TwigThemeLoader implements LoaderInterface
 {
-    /**
-     * @var \Ibexa\DesignEngine\Templating\TemplateNameResolverInterface
-     */
-    private TemplateNameResolverInterface $nameResolver;
-
-    /**
-     * @var \Ibexa\DesignEngine\Templating\TemplatePathRegistryInterface
-     */
-    private TemplatePathRegistryInterface $pathRegistry;
-
-    private FilesystemLoader $innerFilesystemLoader;
-
     public function __construct(
-        TemplateNameResolverInterface $templateNameResolver,
-        TemplatePathRegistryInterface $templatePathRegistry,
-        FilesystemLoader $innerFilesystemLoader
+        private readonly TemplateNameResolverInterface $nameResolver,
+        private readonly TemplatePathRegistryInterface $pathRegistry,
+        private readonly FilesystemLoader $innerFilesystemLoader
     ) {
-        $this->innerFilesystemLoader = $innerFilesystemLoader;
-        $this->nameResolver = $templateNameResolver;
-        $this->pathRegistry = $templatePathRegistry;
     }
 
     public function exists(string $name): bool
