@@ -89,3 +89,6 @@ jobs:
 
             - name: Run unit test suite
               run: composer test
+
+            - name: Run PHPStan analysis
+              run: composer run-script phpstan
