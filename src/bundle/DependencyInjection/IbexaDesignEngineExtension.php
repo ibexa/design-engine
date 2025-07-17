@@ -23,6 +23,9 @@ class IbexaDesignEngineExtension extends Extension
         return self::EXTENSION_NAME;
     }
 
+    /**
+     * @param array<string, mixed> $config
+     */
     #[\Override]
     public function getConfiguration(array $config, ContainerBuilder $container): ?ConfigurationInterface
     {
@@ -45,6 +48,9 @@ class IbexaDesignEngineExtension extends Extension
         $this->configureDesigns($config, $container);
     }
 
+    /**
+     * @param array<string, mixed> $config
+     */
     private function configureDesigns(array $config, ContainerBuilder $container): void
     {
         // Always add "standard" design to the list (defaults to application level & override paths only)

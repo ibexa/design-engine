@@ -24,11 +24,17 @@ class DesignConfigParser implements ParserInterface
         }
     }
 
+    /**
+     * @param array<string, mixed> $config
+     */
     public function preMap(array $config, ContextualizerInterface $contextualizer): void
     {
         // Nothing to map
     }
 
+    /**
+     * @param array<string, mixed> $config
+     */
     public function postMap(array $config, ContextualizerInterface $contextualizer): void
     {
         // Nothing to map

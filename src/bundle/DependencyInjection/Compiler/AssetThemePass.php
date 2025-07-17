@@ -21,17 +21,20 @@ class AssetThemePass implements CompilerPassInterface
             return;
         }
 
+        $overridePaths = $container->getParameter('ibexa.design.assets.override_paths');
         $themesPathMap = [
             '_override' => array_merge(
                 ['assets'],
-                $container->getParameter('ibexa.design.assets.override_paths')
+                (array)$overridePaths,
             ),
         ];
         $finder = new Finder();
         // Look for assets themes in bundles.
-        foreach ($container->getParameter('kernel.bundles') as $bundleName => $bundleClass) {
+        foreach ((array)$container->getParameter('kernel.bundles') as $bundleName => $bundleClass) {
             $bundleReflection = new \ReflectionClass($bundleClass);
-            $bundleViewsDir = \dirname($bundleReflection->getFileName()) . '/Resources/public';
+            $fileName = $bundleReflection->getFileName();
+            assert(is_string($fileName));
+            $bundleViewsDir = \dirname($fileName) . '/Resources/public';
             $themeDir = $bundleViewsDir . '/themes';
             if (!is_dir($themeDir)) {
                 continue;
@@ -46,7 +49,9 @@ class AssetThemePass implements CompilerPassInterface
         }
 
         // Look for assets themes at application level (web/assets/themes).
-        $appLevelThemeDir = $container->getParameter('webroot_dir') . '/assets/themes';
+        $webrootDir = $container->getParameter('webroot_dir');
+        assert(is_string($webrootDir));
+        $appLevelThemeDir = $webrootDir . '/assets/themes';
         if (is_dir($appLevelThemeDir)) {
             foreach ((new Finder())->directories()->in($appLevelThemeDir)->depth('== 0') as $directoryInfo) {
                 $theme = $directoryInfo->getBasename();
@@ -62,7 +67,7 @@ class AssetThemePass implements CompilerPassInterface
         }
 
         $pathsByDesign = [];
-        foreach ($container->getParameter('ibexa.design.list') as $designName => $themeFallback) {
+        foreach ((array)$container->getParameter('ibexa.design.list') as $designName => $themeFallback) {
             // Always add _override theme first.
             array_unshift($themeFallback, '_override');
             foreach ($themeFallback as $theme) {
@@ -77,7 +82,7 @@ class AssetThemePass implements CompilerPassInterface
             }
         }
 
-        $themesList = $container->getParameter('ibexa.design.themes.list');
+        $themesList = (array)$container->getParameter('ibexa.design.themes.list');
         $container->setParameter(
             'ibexa.design.themes.list',
             array_unique(

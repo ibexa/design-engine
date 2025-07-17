@@ -41,6 +41,6 @@ class IbexaDesignEngineBundle extends Bundle
             $this->extension = new IbexaDesignEngineExtension();
         }
 
-        return $this->extension;
+        return $this->extension === false ? null : $this->extension;
     }
 }

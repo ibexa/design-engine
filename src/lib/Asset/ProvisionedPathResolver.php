@@ -9,15 +9,15 @@ namespace Ibexa\DesignEngine\Asset;
 
 use Symfony\Component\Finder\Finder;
 
-class ProvisionedPathResolver implements AssetPathResolverInterface, AssetPathProvisionerInterface
+readonly class ProvisionedPathResolver implements AssetPathResolverInterface, AssetPathProvisionerInterface
 {
     /**
      * @param array<string, array<string, string>> $resolvedPaths
      */
     public function __construct(
-        private array $resolvedPaths,
-        private readonly AssetPathResolverInterface $innerResolver,
-        private readonly string $webRootDir
+        private array                      $resolvedPaths,
+        private AssetPathResolverInterface $innerResolver,
+        private string                     $webRootDir
     ) {
     }
 

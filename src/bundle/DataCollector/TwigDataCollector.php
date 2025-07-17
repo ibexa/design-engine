@@ -24,10 +24,6 @@ class TwigDataCollector extends BaseCollector
 
     private function getTemplatePathRegistry(): TemplatePathRegistryInterface
     {
-        if (!isset($this->templatePathRegistry)) {
-            $this->templatePathRegistry = unserialize($this->data['template_path_registry']);
-        }
-
         return $this->templatePathRegistry;
     }
 

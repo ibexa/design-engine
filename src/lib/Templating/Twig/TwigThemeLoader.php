@@ -17,12 +17,12 @@ use Twig\Source;
  * Decorates regular Twig FilesystemLoader.
  * It resolves generic @ibexadesign namespace to the actual current namespace.
  */
-class TwigThemeLoader implements LoaderInterface
+readonly class TwigThemeLoader implements LoaderInterface
 {
     public function __construct(
-        private readonly TemplateNameResolverInterface $nameResolver,
-        private readonly TemplatePathRegistryInterface $pathRegistry,
-        private readonly FilesystemLoader $innerFilesystemLoader
+        private TemplateNameResolverInterface $nameResolver,
+        private TemplatePathRegistryInterface $pathRegistry,
+        private FilesystemLoader              $innerFilesystemLoader
     ) {
     }
 
@@ -49,11 +49,17 @@ class TwigThemeLoader implements LoaderInterface
         return $this->innerFilesystemLoader->isFresh($this->nameResolver->resolveTemplateName($name), $time);
     }
 
+    /**
+     * @return list<string>
+     */
     public function getPaths(string $namespace = FilesystemLoader::MAIN_NAMESPACE): array
     {
         return $this->innerFilesystemLoader->getPaths($namespace);
     }
 
+    /**
+     * @return list<string>
+     */
     public function getNamespaces(): array
     {
         return $this->innerFilesystemLoader->getNamespaces();

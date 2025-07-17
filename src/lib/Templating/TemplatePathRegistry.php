@@ -45,7 +45,7 @@ class TemplatePathRegistry implements TemplatePathRegistryInterface, Serializabl
     }
 
     /**
-     * @return array<array<string, string>, string>
+     * @return array{array<string, string>, string}
      */
     public function __serialize(): array
     {
@@ -53,7 +53,7 @@ class TemplatePathRegistry implements TemplatePathRegistryInterface, Serializabl
     }
 
     /**
-     * @param array<string, mixed> $data
+     * @param array{array<string, string>, string} $data
      */
     public function __unserialize(array $data): void
     {

@@ -13,7 +13,7 @@ use Psr\Log\LoggerInterface;
 class AssetPathResolver implements AssetPathResolverInterface
 {
     /**
-     * @param array<string, array<string, string>> $designPaths
+     * @param array<string, array<int, string>> $designPaths
      */
     public function __construct(
         private readonly array $designPaths,
