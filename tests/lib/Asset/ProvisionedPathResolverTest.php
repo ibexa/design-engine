@@ -11,6 +11,7 @@ use Ibexa\DesignEngine\Asset\AssetPathResolver;
 use Ibexa\DesignEngine\Asset\AssetPathResolverInterface;
 use Ibexa\DesignEngine\Asset\ProvisionedPathResolver;
 use org\bovigo\vfs\vfsStream;
+use org\bovigo\vfs\vfsStreamDirectory;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -18,10 +19,7 @@ class ProvisionedPathResolverTest extends TestCase
 {
     private AssetPathResolverInterface&MockObject $innerResolver;
 
-    /**
-     * @var \org\bovigo\vfs\vfsStreamDirectory
-     */
-    private $webrootDir;
+    private vfsStreamDirectory $webrootDir;
 
     protected function setUp(): void
     {

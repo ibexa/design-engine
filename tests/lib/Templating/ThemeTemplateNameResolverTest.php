@@ -23,6 +23,13 @@ class ThemeTemplateNameResolverTest extends TestCase
         $this->configResolver = $this->createMock(ConfigResolverInterface::class);
     }
 
+    /**
+     * @return list<array{
+     *     0: ?string,
+     *     1: string,
+     *     2: string
+     * }>
+     */
     public function templateNameProvider(): array
     {
         return [
@@ -45,6 +52,13 @@ class ThemeTemplateNameResolverTest extends TestCase
         self::assertSame($expectedTemplateName, $resolver->resolveTemplateName($templateName));
     }
 
+    /**
+     * @return list<array{
+     *     0: ?string,
+     *     1: string,
+     *     2: bool
+     * }>
+     */
     public function isTemplateDesignNamespacedProvider(): array
     {
         return [

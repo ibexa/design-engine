@@ -42,6 +42,11 @@ class AssetPathResolutionPass implements CompilerPassInterface
         $container->setAlias('ibexadesign.asset_path_resolver', new Alias(ProvisionedPathResolver::class));
     }
 
+    /**
+     * @param array<string, list<string>> $designPathMap
+     *
+     * @return array<string, array<string, string>>
+     */
     private function preResolveAssetsPaths(AssetPathProvisionerInterface $provisioner, array $designPathMap): array
     {
         $resolvedPathsByDesign = [];

@@ -13,6 +13,10 @@ use Symfony\Component\Config\Definition\Builder\NodeBuilder;
 
 class DesignConfigParser implements ParserInterface
 {
+    /**
+     * @param array<string, mixed> $scopeSettings
+     * @param string $currentScope
+     */
     public function mapConfig(array &$scopeSettings, $currentScope, ContextualizerInterface $contextualizer): void
     {
         if (isset($scopeSettings['design'])) {

@@ -7,7 +7,6 @@
 
 namespace Ibexa\Bundle\DesignEngine\DependencyInjection;
 
-use Ibexa\Bundle\Core\DependencyInjection\Configuration\SiteAccessAware\ConfigurationProcessor;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -18,11 +17,13 @@ class IbexaDesignEngineExtension extends Extension
 {
     public const string EXTENSION_NAME = 'ibexa_design_engine';
 
+    #[\Override]
     public function getAlias(): string
     {
         return self::EXTENSION_NAME;
     }
 
+    #[\Override]
     public function getConfiguration(array $config, ContainerBuilder $container): ?ConfigurationInterface
     {
         return new Configuration();
@@ -40,12 +41,11 @@ class IbexaDesignEngineExtension extends Extension
         $configuration = $this->getConfiguration($configs, $container);
         assert(null !== $configuration);
         $config = $this->processConfiguration($configuration, $configs);
-        $processor = new ConfigurationProcessor($container, 'ezdesign');
 
-        $this->configureDesigns($config, $processor, $container);
+        $this->configureDesigns($config, $container);
     }
 
-    private function configureDesigns(array $config, ConfigurationProcessor $processor, ContainerBuilder $container): void
+    private function configureDesigns(array $config, ContainerBuilder $container): void
     {
         // Always add "standard" design to the list (defaults to application level & override paths only)
         $config['design_list'] += ['standard' => []];

@@ -14,11 +14,9 @@ class TemplatePathRegistry implements TemplatePathRegistryInterface, Serializabl
     /** @var array<string, string> */
     private array $pathMap = [];
 
-    private string $kernelRootDir;
-
-    public function __construct(string $kernelRootDir)
-    {
-        $this->kernelRootDir = $kernelRootDir;
+    public function __construct(
+        private string $kernelRootDir
+    ) {
     }
 
     public function mapTemplatePath(string $templateName, string $path): void
@@ -41,16 +39,22 @@ class TemplatePathRegistry implements TemplatePathRegistryInterface, Serializabl
         return serialize([$this->pathMap, $this->kernelRootDir]);
     }
 
-    public function unserialize($serialized): void
+    public function unserialize(string $serialized): void
     {
         [$this->pathMap, $this->kernelRootDir] = unserialize($serialized);
     }
 
+    /**
+     * @return array<array<string, string>, string>
+     */
     public function __serialize(): array
     {
         return [$this->pathMap, $this->kernelRootDir];
     }
 
+    /**
+     * @param array<string, mixed> $data
+     */
     public function __unserialize(array $data): void
     {
         [$this->pathMap, $this->kernelRootDir] = $data;
