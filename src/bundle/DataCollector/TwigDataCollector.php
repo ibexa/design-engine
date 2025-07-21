@@ -17,14 +17,14 @@ class TwigDataCollector extends BaseCollector
     public function __construct(
         Profile $profile,
         Environment $environment,
-        private TemplatePathRegistryInterface $templatePathRegistry
+        private ?TemplatePathRegistryInterface $templatePathRegistry
     ) {
         parent::__construct($profile, $environment);
     }
 
     private function getTemplatePathRegistry(): TemplatePathRegistryInterface
     {
-        return $this->templatePathRegistry;
+        return $this->templatePathRegistry ??= unserialize($this->data['template_path_registry']);
     }
 
     #[\Override]
