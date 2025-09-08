@@ -11,6 +11,7 @@ use Symfony\Bridge\Twig\DataCollector\TwigDataCollector as BaseCollector;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\DataCollector\LateDataCollectorInterface;
+use Throwable;
 use Twig\Environment;
 use Twig\Profiler\Profile;
 
@@ -36,7 +37,7 @@ class TwigDataCollector extends BaseCollector implements LateDataCollectorInterf
         return $this->templatePathRegistry;
     }
 
-    public function collect(Request $request, Response $response, \Throwable $exception = null)
+    public function collect(Request $request, Response $response, ?Throwable $exception = null)
     {
         parent::collect($request, $response, $exception);
     }
