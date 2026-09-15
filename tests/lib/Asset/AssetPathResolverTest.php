@@ -10,9 +10,12 @@ namespace Ibexa\Tests\DesignEngine\Asset;
 use Ibexa\DesignEngine\Asset\AssetPathResolver;
 use Ibexa\DesignEngine\Exception\InvalidDesignException;
 use org\bovigo\vfs\vfsStream;
+use PHPUnit\Framework\Attributes\CoversMethod;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
 
+#[CoversMethod(AssetPathResolver::class, 'resolveAssetPath')]
 class AssetPathResolverTest extends TestCase
 {
     public function testResolveAssetPathFail(): void
@@ -27,9 +30,6 @@ class AssetPathResolverTest extends TestCase
         self::assertSame($assetPath, $resolver->resolveAssetPath($assetPath, 'foo'));
     }
 
-    /**
-     * @covers \Ibexa\DesignEngine\Asset\AssetPathResolver::resolveAssetPath
-     */
     public function testResolveInvalidDesign(): void
     {
         $resolver = new AssetPathResolver([], __DIR__);
@@ -46,7 +46,7 @@ class AssetPathResolverTest extends TestCase
      *     3: string
      * }>
      */
-    public function resolveAssetPathProvider(): array
+    public static function resolveAssetPathProvider(): array
     {
         return [
             [
@@ -113,11 +113,10 @@ class AssetPathResolverTest extends TestCase
     }
 
     /**
-     * @dataProvider resolveAssetPathProvider
-     *
      * @param array{foo: array<string>} $designPaths
      * @param list<string> $existingPaths
      */
+    #[DataProvider('resolveAssetPathProvider')]
     public function testResolveAssetPath(array $designPaths, array $existingPaths, string $path, string $resolvedPath): void
     {
         $webrootDir = vfsStream::setup('web');
