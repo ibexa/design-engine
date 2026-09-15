@@ -9,6 +9,7 @@ namespace Ibexa\Tests\DesignEngine\Templating;
 
 use Ibexa\Contracts\Core\SiteAccess\ConfigResolverInterface;
 use Ibexa\DesignEngine\Templating\ThemeTemplateNameResolver;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -30,7 +31,7 @@ class ThemeTemplateNameResolverTest extends TestCase
      *     2: string
      * }>
      */
-    public function templateNameProvider(): array
+    public static function templateNameProvider(): array
     {
         return [
             [null, 'foo.html.twig', 'foo.html.twig'],
@@ -39,9 +40,7 @@ class ThemeTemplateNameResolverTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider templateNameProvider
-     */
+    #[DataProvider('templateNameProvider')]
     public function testResolveTemplateName(?string $currentDesign, string $templateName, string $expectedTemplateName): void
     {
         $this->configResolver
@@ -59,7 +58,7 @@ class ThemeTemplateNameResolverTest extends TestCase
      *     2: bool
      * }>
      */
-    public function isTemplateDesignNamespacedProvider(): array
+    public static function isTemplateDesignNamespacedProvider(): array
     {
         return [
             [null, 'foo.html.twig', false],
@@ -69,9 +68,7 @@ class ThemeTemplateNameResolverTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider isTemplateDesignNamespacedProvider
-     */
+    #[DataProvider('isTemplateDesignNamespacedProvider')]
     public function testIsTemplateDesignNamespaced(?string $currentDesign, string $templateName, bool $expected): void
     {
         $this->configResolver
