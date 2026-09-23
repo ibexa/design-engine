@@ -6,8 +6,11 @@
         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/11.5/phpunit.xsd"
         bootstrap="tests/bootstrap.php"
         failOnWarning="true"
+        failOnNotice="true"
         colors="true"
         cacheDirectory=".phpunit.cache"
+        displayDetailsOnTestsThatTriggerDeprecations="true"
+        failOnDeprecation="true"
     >
 
     <testsuites>
@@ -16,7 +19,11 @@
         </testsuite>
     </testsuites>
 
-    <extensions>
-        <bootstrap class="Symfony\Bridge\PhpUnit\SymfonyExtension"/>
-    </extensions>
+    <source baseline="phpunit.baseline.xml" ignoreIndirectDeprecations="false" ignoreSuppressionOfDeprecations="true">
+        <include>
+            <directory>src/lib</directory>
+            <directory>src/bundle</directory>
+            <directory>src/contracts</directory>
+        </include>
+    </source>
 </phpunit>
