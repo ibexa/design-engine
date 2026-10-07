@@ -4,8 +4,10 @@
  * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
+
 namespace Ibexa\Bundle\DesignEngine;
 
+use Ibexa\Bundle\Core\DependencyInjection\IbexaCoreExtension;
 use Ibexa\Bundle\DesignEngine\DependencyInjection\Compiler\AssetPathResolutionPass;
 use Ibexa\Bundle\DesignEngine\DependencyInjection\Compiler\AssetThemePass;
 use Ibexa\Bundle\DesignEngine\DependencyInjection\Compiler\TwigThemePass;
@@ -21,7 +23,7 @@ class IbexaDesignEngineBundle extends Bundle
     {
         parent::build($container);
 
-        /** @var \Ibexa\Bundle\Core\DependencyInjection\IbexaCoreExtension $eZExtension */
+        /** @var IbexaCoreExtension $eZExtension */
         $eZExtension = $container->getExtension('ibexa');
         $eZExtension->addConfigParser(new DesignConfigParser());
         $eZExtension->addDefaultSettings(__DIR__ . '/Resources/config', ['default_settings.yaml']);

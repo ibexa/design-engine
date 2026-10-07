@@ -4,6 +4,7 @@
  * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
+
 namespace Ibexa\Tests\DesignEngine\Templating;
 
 use Ibexa\DesignEngine\Templating\TemplatePathRegistry;
@@ -11,8 +12,10 @@ use PHPUnit\Framework\TestCase;
 
 class TemplatePathRegistryTest extends TestCase
 {
-    private function getExpectedRelativePath($templateFullPath, $kernelRootDir)
-    {
+    private function getExpectedRelativePath(
+        $templateFullPath,
+        $kernelRootDir
+    ) {
         return str_replace($kernelRootDir . '/', '', $templateFullPath);
     }
 

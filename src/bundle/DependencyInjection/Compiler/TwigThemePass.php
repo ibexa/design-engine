@@ -4,6 +4,7 @@
  * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
+
 namespace Ibexa\Bundle\DesignEngine\DependencyInjection\Compiler;
 
 use Ibexa\Bundle\DesignEngine\DataCollector\TwigDataCollector;
@@ -14,6 +15,7 @@ use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\Finder\Finder;
+use Symfony\Component\Finder\SplFileInfo;
 
 /**
  * Registers defined designs as valid Twig namespaces.
@@ -41,7 +43,7 @@ class TwigThemePass implements CompilerPassInterface
                 continue;
             }
 
-            /** @var \Symfony\Component\Finder\SplFileInfo $directoryInfo */
+            /** @var SplFileInfo $directoryInfo */
             foreach ($finder->directories()->in($themeDir)->depth('== 0') as $directoryInfo) {
                 $themesPathMap[$directoryInfo->getBasename()][] = $directoryInfo->getRealPath();
             }
