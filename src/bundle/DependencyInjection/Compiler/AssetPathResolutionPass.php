@@ -4,6 +4,7 @@
  * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
+
 namespace Ibexa\Bundle\DesignEngine\DependencyInjection\Compiler;
 
 use Ibexa\DesignEngine\Asset\AssetPathProvisionerInterface;
@@ -38,8 +39,10 @@ class AssetPathResolutionPass implements CompilerPassInterface
         $container->setAlias('ibexadesign.asset_path_resolver', new Alias(ProvisionedPathResolver::class));
     }
 
-    private function preResolveAssetsPaths(AssetPathProvisionerInterface $provisioner, array $designPathMap)
-    {
+    private function preResolveAssetsPaths(
+        AssetPathProvisionerInterface $provisioner,
+        array $designPathMap
+    ) {
         $resolvedPathsByDesign = [];
         foreach ($designPathMap as $design => $paths) {
             $resolvedPathsByDesign[$design] = $provisioner->provisionResolvedPaths($paths, $design);

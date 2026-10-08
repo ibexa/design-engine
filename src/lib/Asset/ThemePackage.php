@@ -4,6 +4,7 @@
  * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
+
 namespace Ibexa\DesignEngine\Asset;
 
 use Ibexa\Contracts\DesignEngine\DesignAwareInterface;
@@ -20,12 +21,14 @@ class ThemePackage implements PackageInterface, DesignAwareInterface
     private $pathResolver;
 
     /**
-     * @var \Symfony\Component\Asset\PackageInterface
+     * @var PackageInterface
      */
     private $innerPackage;
 
-    public function __construct(AssetPathResolverInterface $pathResolver, PackageInterface $innerPackage)
-    {
+    public function __construct(
+        AssetPathResolverInterface $pathResolver,
+        PackageInterface $innerPackage
+    ) {
         $this->pathResolver = $pathResolver;
         $this->innerPackage = $innerPackage;
     }

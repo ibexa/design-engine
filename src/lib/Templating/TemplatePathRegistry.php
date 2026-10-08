@@ -4,6 +4,7 @@
  * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
+
 namespace Ibexa\DesignEngine\Templating;
 
 use Serializable;
@@ -21,8 +22,10 @@ class TemplatePathRegistry implements TemplatePathRegistryInterface, Serializabl
         $this->kernelRootDir = $kernelRootDir;
     }
 
-    public function mapTemplatePath($templateName, $path)
-    {
+    public function mapTemplatePath(
+        $templateName,
+        $path
+    ) {
         $this->pathMap[$templateName] = str_replace($this->kernelRootDir . '/', '', $path);
     }
 

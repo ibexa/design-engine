@@ -4,6 +4,7 @@
  * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
+
 namespace Ibexa\DesignEngine\Templating\Twig;
 
 use Ibexa\DesignEngine\Templating\TemplateNameResolverInterface;
@@ -19,17 +20,17 @@ use Twig\Source;
 class TwigThemeLoader implements LoaderInterface
 {
     /**
-     * @var \Ibexa\DesignEngine\Templating\TemplateNameResolverInterface
+     * @var TemplateNameResolverInterface
      */
     private $nameResolver;
 
     /**
-     * @var \Ibexa\DesignEngine\Templating\TemplatePathRegistryInterface
+     * @var TemplatePathRegistryInterface
      */
     private $pathRegistry;
 
     /**
-     * @var \Twig\Loader\FilesystemLoader
+     * @var FilesystemLoader
      */
     private $innerFilesystemLoader;
 
@@ -66,8 +67,10 @@ class TwigThemeLoader implements LoaderInterface
         return $this->innerFilesystemLoader->getCacheKey($this->nameResolver->resolveTemplateName($name));
     }
 
-    public function isFresh(string $name, int $time): bool
-    {
+    public function isFresh(
+        string $name,
+        int $time
+    ): bool {
         return $this->innerFilesystemLoader->isFresh($this->nameResolver->resolveTemplateName($name), $time);
     }
 
@@ -81,18 +84,24 @@ class TwigThemeLoader implements LoaderInterface
         return $this->innerFilesystemLoader->getNamespaces();
     }
 
-    public function setPaths($paths, $namespace = FilesystemLoader::MAIN_NAMESPACE)
-    {
+    public function setPaths(
+        $paths,
+        $namespace = FilesystemLoader::MAIN_NAMESPACE
+    ) {
         $this->innerFilesystemLoader->setPaths($paths, $namespace);
     }
 
-    public function addPath($path, $namespace = FilesystemLoader::MAIN_NAMESPACE)
-    {
+    public function addPath(
+        $path,
+        $namespace = FilesystemLoader::MAIN_NAMESPACE
+    ) {
         $this->innerFilesystemLoader->addPath($path, $namespace);
     }
 
-    public function prependPath($path, $namespace = FilesystemLoader::MAIN_NAMESPACE)
-    {
+    public function prependPath(
+        $path,
+        $namespace = FilesystemLoader::MAIN_NAMESPACE
+    ) {
         $this->innerFilesystemLoader->prependPath($path, $namespace);
     }
 }

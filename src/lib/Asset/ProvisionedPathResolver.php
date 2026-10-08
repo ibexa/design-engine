@@ -4,6 +4,7 @@
  * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
+
 namespace Ibexa\DesignEngine\Asset;
 
 use Symfony\Component\Finder\Finder;
@@ -25,8 +26,11 @@ class ProvisionedPathResolver implements AssetPathResolverInterface, AssetPathPr
      */
     private $webRootDir;
 
-    public function __construct(array $resolvedPaths, AssetPathResolverInterface $innerResolver, $webRootDir)
-    {
+    public function __construct(
+        array $resolvedPaths,
+        AssetPathResolverInterface $innerResolver,
+        $webRootDir
+    ) {
         $this->resolvedPaths = $resolvedPaths;
         $this->innerResolver = $innerResolver;
         $this->webRootDir = $webRootDir;
@@ -38,8 +42,10 @@ class ProvisionedPathResolver implements AssetPathResolverInterface, AssetPathPr
      *
      * {@inheritdoc}
      */
-    public function resolveAssetPath($path, $design)
-    {
+    public function resolveAssetPath(
+        $path,
+        $design
+    ) {
         if (!isset($this->resolvedPaths[$design][$path])) {
             return $this->innerResolver->resolveAssetPath($path, $design);
         }
@@ -47,8 +53,10 @@ class ProvisionedPathResolver implements AssetPathResolverInterface, AssetPathPr
         return $this->resolvedPaths[$design][$path];
     }
 
-    public function provisionResolvedPaths(array $assetsPaths, $design)
-    {
+    public function provisionResolvedPaths(
+        array $assetsPaths,
+        $design
+    ) {
         $webrootDir = $this->webRootDir;
         $assetsLogicalPaths = [];
         foreach ($assetsPaths as $path) {
