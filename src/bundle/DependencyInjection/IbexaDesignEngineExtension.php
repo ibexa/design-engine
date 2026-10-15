@@ -27,16 +27,20 @@ class IbexaDesignEngineExtension extends Extension
      * @param array<string, mixed> $config
      */
     #[\Override]
-    public function getConfiguration(array $config, ContainerBuilder $container): ?ConfigurationInterface
-    {
+    public function getConfiguration(
+        array $config,
+        ContainerBuilder $container
+    ): ?ConfigurationInterface {
         return new Configuration();
     }
 
     /**
      * @throws \Exception
      */
-    public function load(array $configs, ContainerBuilder $container): void
-    {
+    public function load(
+        array $configs,
+        ContainerBuilder $container
+    ): void {
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.yaml');
         $loader->load('default_settings.yaml');
@@ -51,8 +55,10 @@ class IbexaDesignEngineExtension extends Extension
     /**
      * @param array<string, mixed> $config
      */
-    private function configureDesigns(array $config, ContainerBuilder $container): void
-    {
+    private function configureDesigns(
+        array $config,
+        ContainerBuilder $container
+    ): void {
         // Always add "standard" design to the list (defaults to application level & override paths only)
         $config['design_list'] += ['standard' => []];
         $container->setParameter('ibexa.design.list', $config['design_list']);

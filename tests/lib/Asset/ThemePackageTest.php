@@ -16,11 +16,11 @@ use Symfony\Component\Asset\PackageInterface;
 
 class ThemePackageTest extends TestCase
 {
-    private AssetPathResolverInterface&MockObject $assetPathResolver;
+    private AssetPathResolverInterface & MockObject $assetPathResolver;
 
-    private PackageInterface&MockObject $innerPackage;
+    private PackageInterface & MockObject $innerPackage;
 
-    private ConfigResolverInterface&MockObject $configResolver;
+    private ConfigResolverInterface & MockObject $configResolver;
 
     protected function setUp(): void
     {

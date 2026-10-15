@@ -18,20 +18,23 @@ readonly class ProvisionedPathResolver implements AssetPathResolverInterface, As
         private array $resolvedPaths,
         private AssetPathResolverInterface $innerResolver,
         private string $webRootDir
-    ) {
-    }
+    ) {}
 
     /**
      * Looks for $path within pre-resolved paths for provided design.
      * If it cannot be found, fallbacks to original resolver.
      */
-    public function resolveAssetPath(string $path, string $design): string
-    {
+    public function resolveAssetPath(
+        string $path,
+        string $design
+    ): string {
         return $this->resolvedPaths[$design][$path] ?? $this->innerResolver->resolveAssetPath($path, $design);
     }
 
-    public function provisionResolvedPaths(array $assetsPaths, string $design): array
-    {
+    public function provisionResolvedPaths(
+        array $assetsPaths,
+        string $design
+    ): array {
         $webrootDir = $this->webRootDir;
         $assetsLogicalPaths = [];
         foreach ($assetsPaths as $path) {

@@ -16,11 +16,12 @@ class TemplatePathRegistry implements TemplatePathRegistryInterface, Serializabl
 
     public function __construct(
         private string $kernelRootDir
-    ) {
-    }
+    ) {}
 
-    public function mapTemplatePath(string $templateName, string $path): void
-    {
+    public function mapTemplatePath(
+        string $templateName,
+        string $path
+    ): void {
         $this->pathMap[$templateName] = str_replace($this->kernelRootDir . '/', '', $path);
     }
 

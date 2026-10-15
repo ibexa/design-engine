@@ -118,8 +118,12 @@ class AssetPathResolverTest extends TestCase
      * @param array{foo: array<string>} $designPaths
      * @param list<string> $existingPaths
      */
-    public function testResolveAssetPath(array $designPaths, array $existingPaths, string $path, string $resolvedPath): void
-    {
+    public function testResolveAssetPath(
+        array $designPaths,
+        array $existingPaths,
+        string $path,
+        string $resolvedPath
+    ): void {
         $webrootDir = vfsStream::setup('web');
         foreach ($designPaths['foo'] as $designPath) {
             if (\in_array($designPath, $existingPaths)) {

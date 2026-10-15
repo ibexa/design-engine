@@ -9,6 +9,4 @@ namespace Ibexa\DesignEngine\Exception;
 
 use InvalidArgumentException;
 
-class InvalidDesignException extends InvalidArgumentException
-{
-}
+class InvalidDesignException extends InvalidArgumentException {}

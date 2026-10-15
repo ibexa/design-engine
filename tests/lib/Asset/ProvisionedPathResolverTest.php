@@ -17,7 +17,7 @@ use PHPUnit\Framework\TestCase;
 
 class ProvisionedPathResolverTest extends TestCase
 {
-    private AssetPathResolverInterface&MockObject $innerResolver;
+    private AssetPathResolverInterface & MockObject $innerResolver;
 
     private vfsStreamDirectory $webrootDir;
 

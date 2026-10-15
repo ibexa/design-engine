@@ -47,8 +47,10 @@ class AssetPathResolutionPass implements CompilerPassInterface
      *
      * @return array<string, array<string, string>>
      */
-    private function preResolveAssetsPaths(AssetPathProvisionerInterface $provisioner, array $designPathMap): array
-    {
+    private function preResolveAssetsPaths(
+        AssetPathProvisionerInterface $provisioner,
+        array $designPathMap
+    ): array {
         $resolvedPathsByDesign = [];
         foreach ($designPathMap as $design => $paths) {
             $resolvedPathsByDesign[$design] = $provisioner->provisionResolvedPaths($paths, $design);

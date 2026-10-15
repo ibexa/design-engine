@@ -18,5 +18,8 @@ interface AssetPathProvisionerInterface
      *
      * @return array<string, string>
      */
-    public function provisionResolvedPaths(array $assetsPaths, string $design): array;
+    public function provisionResolvedPaths(
+        array $assetsPaths,
+        string $design
+    ): array;
 }

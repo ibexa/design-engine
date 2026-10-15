@@ -20,5 +20,8 @@ interface AssetPathResolverInterface
      * @param string $path   Asset path to resolve
      * @param string $design Design to resolve path for
      */
-    public function resolveAssetPath(string $path, string $design): string;
+    public function resolveAssetPath(
+        string $path,
+        string $design
+    ): string;
 }

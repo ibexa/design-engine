@@ -8,6 +8,7 @@ declare(strict_types=1);
 
 namespace Ibexa\Bundle\DesignEngine;
 
+use Ibexa\Bundle\Core\DependencyInjection\IbexaCoreExtension;
 use Ibexa\Bundle\DesignEngine\DependencyInjection\Compiler\AssetPathResolutionPass;
 use Ibexa\Bundle\DesignEngine\DependencyInjection\Compiler\AssetThemePass;
 use Ibexa\Bundle\DesignEngine\DependencyInjection\Compiler\TwigThemePass;
@@ -24,7 +25,7 @@ class IbexaDesignEngineBundle extends Bundle
     {
         parent::build($container);
 
-        /** @var \Ibexa\Bundle\Core\DependencyInjection\IbexaCoreExtension $eZExtension */
+        /** @var IbexaCoreExtension $eZExtension */
         $eZExtension = $container->getExtension('ibexa');
         $eZExtension->addConfigParser(new DesignConfigParser());
         $eZExtension->addDefaultSettings(__DIR__ . '/Resources/config', ['default_settings.yaml']);
