@@ -4,6 +4,7 @@
  * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
+
 namespace Ibexa\Bundle\DesignEngine\DataCollector;
 
 use Ibexa\DesignEngine\Templating\TemplatePathRegistryInterface;
@@ -18,12 +19,15 @@ use Twig\Profiler\Profile;
 class TwigDataCollector extends BaseCollector implements LateDataCollectorInterface
 {
     /**
-     * @var \Ibexa\DesignEngine\Templating\TemplatePathRegistryInterface
+     * @var TemplatePathRegistryInterface
      */
     private $templatePathRegistry;
 
-    public function __construct(Profile $profile, Environment $environment, TemplatePathRegistryInterface $templatePathRegistry)
-    {
+    public function __construct(
+        Profile $profile,
+        Environment $environment,
+        TemplatePathRegistryInterface $templatePathRegistry
+    ) {
         parent::__construct($profile, $environment);
         $this->templatePathRegistry = $templatePathRegistry;
     }
@@ -37,8 +41,11 @@ class TwigDataCollector extends BaseCollector implements LateDataCollectorInterf
         return $this->templatePathRegistry;
     }
 
-    public function collect(Request $request, Response $response, ?Throwable $exception = null)
-    {
+    public function collect(
+        Request $request,
+        Response $response,
+        ?Throwable $exception = null
+    ) {
         parent::collect($request, $response, $exception);
     }
 

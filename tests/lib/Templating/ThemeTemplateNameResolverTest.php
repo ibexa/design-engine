@@ -4,16 +4,18 @@
  * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
+
 namespace Ibexa\Tests\DesignEngine\Templating;
 
 use Ibexa\Contracts\Core\SiteAccess\ConfigResolverInterface;
 use Ibexa\DesignEngine\Templating\ThemeTemplateNameResolver;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class ThemeTemplateNameResolverTest extends TestCase
 {
     /**
-     * @var \PHPUnit\Framework\MockObject\MockObject|\Ibexa\Contracts\Core\SiteAccess\ConfigResolverInterface
+     * @var MockObject|ConfigResolverInterface
      */
     private $configResolver;
 
@@ -36,8 +38,11 @@ class ThemeTemplateNameResolverTest extends TestCase
     /**
      * @dataProvider templateNameProvider
      */
-    public function testResolveTemplateName($currentDesign, $templateName, $expectedTemplateName)
-    {
+    public function testResolveTemplateName(
+        $currentDesign,
+        $templateName,
+        $expectedTemplateName
+    ) {
         $this->configResolver
             ->method('getParameter')
             ->with('design')
@@ -59,8 +64,11 @@ class ThemeTemplateNameResolverTest extends TestCase
     /**
      * @dataProvider isTemplateDesignNamespacedProvider
      */
-    public function testIsTemplateDesignNamespaced($currentDesign, $templateName, $expected)
-    {
+    public function testIsTemplateDesignNamespaced(
+        $currentDesign,
+        $templateName,
+        $expected
+    ) {
         $this->configResolver
             ->method('getParameter')
             ->with('design')

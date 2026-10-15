@@ -4,6 +4,7 @@
  * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
+
 namespace Ibexa\DesignEngine\Templating;
 
 use Ibexa\Contracts\DesignEngine\DesignAwareInterface;
@@ -16,7 +17,7 @@ interface TemplateNameResolverInterface extends DesignAwareInterface
 {
     /**
      * @deprecated since Ibexa 4.0. Use
-     * {@see \Ibexa\Contracts\DesignEngine\DesignAwareInterface::DESIGN_NAMESPACE} instead.
+     * {@see DesignAwareInterface::DESIGN_NAMESPACE} instead.
      */
     public const EZ_DESIGN_NAMESPACE = 'ezdesign';
 

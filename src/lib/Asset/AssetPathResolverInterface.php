@@ -4,6 +4,7 @@
  * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
+
 namespace Ibexa\DesignEngine\Asset;
 
 /**
@@ -20,7 +21,10 @@ interface AssetPathResolverInterface
      *
      * @return string
      */
-    public function resolveAssetPath($path, $design);
+    public function resolveAssetPath(
+        $path,
+        $design
+    );
 }
 
 class_alias(AssetPathResolverInterface::class, 'EzSystems\EzPlatformDesignEngine\Asset\AssetPathResolverInterface');

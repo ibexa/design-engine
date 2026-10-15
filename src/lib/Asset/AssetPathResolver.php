@@ -4,6 +4,7 @@
  * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
+
 namespace Ibexa\DesignEngine\Asset;
 
 use Ibexa\DesignEngine\Exception\InvalidDesignException;
@@ -17,18 +18,23 @@ class AssetPathResolver implements AssetPathResolverInterface
     /** @var string */
     private $webRootDir;
 
-    /** @var \Psr\Log\LoggerInterface|null */
+    /** @var LoggerInterface|null */
     private $logger;
 
-    public function __construct(array $designPaths, $webRootDir, ?LoggerInterface $logger = null)
-    {
+    public function __construct(
+        array $designPaths,
+        $webRootDir,
+        ?LoggerInterface $logger = null
+    ) {
         $this->designPaths = $designPaths;
         $this->webRootDir = $webRootDir;
         $this->logger = $logger;
     }
 
-    public function resolveAssetPath($path, $design)
-    {
+    public function resolveAssetPath(
+        $path,
+        $design
+    ) {
         if (!isset($this->designPaths[$design])) {
             throw new InvalidDesignException("Invalid design '$design'");
         }

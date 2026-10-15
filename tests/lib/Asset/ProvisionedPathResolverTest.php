@@ -4,23 +4,26 @@
  * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
+
 namespace Ibexa\Tests\DesignEngine\Asset;
 
 use Ibexa\DesignEngine\Asset\AssetPathResolver;
 use Ibexa\DesignEngine\Asset\AssetPathResolverInterface;
 use Ibexa\DesignEngine\Asset\ProvisionedPathResolver;
 use org\bovigo\vfs\vfsStream;
+use org\bovigo\vfs\vfsStreamDirectory;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class ProvisionedPathResolverTest extends TestCase
 {
     /**
-     * @var \PHPUnit\Framework\MockObject\MockObject|\Ibexa\DesignEngine\Asset\AssetPathResolverInterface
+     * @var MockObject|AssetPathResolverInterface
      */
     private $innerResolver;
 
     /**
-     * @var \org\bovigo\vfs\vfsStreamDirectory
+     * @var vfsStreamDirectory
      */
     private $webrootDir;
 
