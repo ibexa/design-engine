@@ -18,8 +18,7 @@ class ThemePackage implements PackageInterface, DesignAwareInterface
     public function __construct(
         private AssetPathResolverInterface $pathResolver,
         private PackageInterface $innerPackage
-    ) {
-    }
+    ) {}
 
     public function getUrl(string $path): string
     {

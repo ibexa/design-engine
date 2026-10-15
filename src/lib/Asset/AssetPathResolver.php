@@ -19,11 +19,12 @@ class AssetPathResolver implements AssetPathResolverInterface
         private readonly array $designPaths,
         private readonly string $webRootDir,
         private readonly ?LoggerInterface $logger = null
-    ) {
-    }
+    ) {}
 
-    public function resolveAssetPath(string $path, string $design): string
-    {
+    public function resolveAssetPath(
+        string $path,
+        string $design
+    ): string {
         if (!isset($this->designPaths[$design])) {
             throw new InvalidDesignException("Invalid design '$design'");
         }

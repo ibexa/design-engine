@@ -20,7 +20,10 @@ interface TemplatePathRegistryInterface
      * @param string $templateName The template logical name
      * @param string $path         Template path
      */
-    public function mapTemplatePath(string $templateName, string $path): void;
+    public function mapTemplatePath(
+        string $templateName,
+        string $path
+    ): void;
 
     public function getTemplatePath(string $templateName): string;
 

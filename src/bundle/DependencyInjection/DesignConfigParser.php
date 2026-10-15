@@ -17,8 +17,11 @@ class DesignConfigParser implements ParserInterface
      * @param array<string, mixed> $scopeSettings
      * @param string $currentScope
      */
-    public function mapConfig(array &$scopeSettings, $currentScope, ContextualizerInterface $contextualizer): void
-    {
+    public function mapConfig(
+        array &$scopeSettings,
+        $currentScope,
+        ContextualizerInterface $contextualizer
+    ): void {
         if (isset($scopeSettings['design'])) {
             $contextualizer->setContextualParameter('design', $currentScope, $scopeSettings['design']);
         }
@@ -27,16 +30,20 @@ class DesignConfigParser implements ParserInterface
     /**
      * @param array<string, mixed> $config
      */
-    public function preMap(array $config, ContextualizerInterface $contextualizer): void
-    {
+    public function preMap(
+        array $config,
+        ContextualizerInterface $contextualizer
+    ): void {
         // Nothing to map
     }
 
     /**
      * @param array<string, mixed> $config
      */
-    public function postMap(array $config, ContextualizerInterface $contextualizer): void
-    {
+    public function postMap(
+        array $config,
+        ContextualizerInterface $contextualizer
+    ): void {
         // Nothing to map
     }
 

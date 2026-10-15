@@ -9,6 +9,7 @@ namespace Ibexa\DesignEngine\Templating\Twig;
 
 use Ibexa\DesignEngine\Templating\TemplateNameResolverInterface;
 use Ibexa\DesignEngine\Templating\TemplatePathRegistryInterface;
+use Twig\Error\LoaderError;
 use Twig\Loader\FilesystemLoader;
 use Twig\Loader\LoaderInterface;
 use Twig\Source;
@@ -23,8 +24,7 @@ readonly class TwigThemeLoader implements LoaderInterface
         private TemplateNameResolverInterface $nameResolver,
         private TemplatePathRegistryInterface $pathRegistry,
         private FilesystemLoader $innerFilesystemLoader
-    ) {
-    }
+    ) {}
 
     public function exists(string $name): bool
     {
@@ -44,8 +44,10 @@ readonly class TwigThemeLoader implements LoaderInterface
         return $this->innerFilesystemLoader->getCacheKey($this->nameResolver->resolveTemplateName($name));
     }
 
-    public function isFresh(string $name, int $time): bool
-    {
+    public function isFresh(
+        string $name,
+        int $time
+    ): bool {
         return $this->innerFilesystemLoader->isFresh($this->nameResolver->resolveTemplateName($name), $time);
     }
 
@@ -68,24 +70,30 @@ readonly class TwigThemeLoader implements LoaderInterface
     /**
      * @param string|string[] $paths
      */
-    public function setPaths(string|array $paths, string $namespace = FilesystemLoader::MAIN_NAMESPACE): void
-    {
+    public function setPaths(
+        string | array $paths,
+        string $namespace = FilesystemLoader::MAIN_NAMESPACE
+    ): void {
         $this->innerFilesystemLoader->setPaths($paths, $namespace);
     }
 
     /**
-     * @throws \Twig\Error\LoaderError
+     * @throws LoaderError
      */
-    public function addPath(string $path, string $namespace = FilesystemLoader::MAIN_NAMESPACE): void
-    {
+    public function addPath(
+        string $path,
+        string $namespace = FilesystemLoader::MAIN_NAMESPACE
+    ): void {
         $this->innerFilesystemLoader->addPath($path, $namespace);
     }
 
     /**
-     * @throws \Twig\Error\LoaderError
+     * @throws LoaderError
      */
-    public function prependPath(string $path, string $namespace = FilesystemLoader::MAIN_NAMESPACE): void
-    {
+    public function prependPath(
+        string $path,
+        string $namespace = FilesystemLoader::MAIN_NAMESPACE
+    ): void {
         $this->innerFilesystemLoader->prependPath($path, $namespace);
     }
 }

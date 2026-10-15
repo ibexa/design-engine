@@ -12,6 +12,7 @@ use Ibexa\DesignEngine\Asset\ThemePackage;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Finder\Finder;
+use Symfony\Component\Finder\SplFileInfo;
 
 class AssetThemePass implements CompilerPassInterface
 {
@@ -40,7 +41,7 @@ class AssetThemePass implements CompilerPassInterface
                 continue;
             }
 
-            /** @var \Symfony\Component\Finder\SplFileInfo $directoryInfo */
+            /** @var SplFileInfo $directoryInfo */
             foreach ($finder->directories()->in($themeDir)->depth('== 0') as $directoryInfo) {
                 $theme = $directoryInfo->getBasename();
                 $bundleAssetDir = strtolower(substr($bundleName, 0, strripos($bundleName, 'bundle')));

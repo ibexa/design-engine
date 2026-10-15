@@ -12,8 +12,10 @@ use PHPUnit\Framework\TestCase;
 
 class TemplatePathRegistryTest extends TestCase
 {
-    private function getExpectedRelativePath(string $templateFullPath, string $kernelRootDir): string
-    {
+    private function getExpectedRelativePath(
+        string $templateFullPath,
+        string $kernelRootDir
+    ): string {
         return str_replace($kernelRootDir . '/', '', $templateFullPath);
     }
 
