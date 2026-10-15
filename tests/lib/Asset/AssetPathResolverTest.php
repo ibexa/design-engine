@@ -22,7 +22,7 @@ class AssetPathResolverTest extends TestCase
     {
         $logger = $this->createMock(LoggerInterface::class);
         $logger
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('warning');
 
         $resolver = new AssetPathResolver(['foo' => []], __DIR__, $logger);
@@ -117,8 +117,12 @@ class AssetPathResolverTest extends TestCase
      * @param list<string> $existingPaths
      */
     #[DataProvider('resolveAssetPathProvider')]
-    public function testResolveAssetPath(array $designPaths, array $existingPaths, string $path, string $resolvedPath): void
-    {
+    public function testResolveAssetPath(
+        array $designPaths,
+        array $existingPaths,
+        string $path,
+        string $resolvedPath
+    ): void {
         $webrootDir = vfsStream::setup('web');
         foreach ($designPaths['foo'] as $designPath) {
             if (\in_array($designPath, $existingPaths)) {

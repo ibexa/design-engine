@@ -34,7 +34,7 @@ class ProvisionedPathResolverTest extends TestCase
         $design = 'foo';
         $expected = 'some/path/images/some_image.jpg';
         $this->innerResolver
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('resolveAssetPath')
             ->with($assetLogicalPath, $design)
             ->willReturn($expected);

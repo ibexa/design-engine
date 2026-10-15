@@ -15,7 +15,7 @@ use PHPUnit\Framework\TestCase;
 
 class ThemeTemplateNameResolverTest extends TestCase
 {
-    private ConfigResolverInterface&MockObject $configResolver;
+    private ConfigResolverInterface & MockObject $configResolver;
 
     protected function setUp(): void
     {
@@ -41,8 +41,11 @@ class ThemeTemplateNameResolverTest extends TestCase
     }
 
     #[DataProvider('templateNameProvider')]
-    public function testResolveTemplateName(?string $currentDesign, string $templateName, string $expectedTemplateName): void
-    {
+    public function testResolveTemplateName(
+        ?string $currentDesign,
+        string $templateName,
+        string $expectedTemplateName
+    ): void {
         $this->configResolver
             ->method('getParameter')
             ->with('design')
@@ -69,8 +72,11 @@ class ThemeTemplateNameResolverTest extends TestCase
     }
 
     #[DataProvider('isTemplateDesignNamespacedProvider')]
-    public function testIsTemplateDesignNamespaced(?string $currentDesign, string $templateName, bool $expected): void
-    {
+    public function testIsTemplateDesignNamespaced(
+        ?string $currentDesign,
+        string $templateName,
+        bool $expected
+    ): void {
         $this->configResolver
             ->method('getParameter')
             ->with('design')

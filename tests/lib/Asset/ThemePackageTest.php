@@ -38,12 +38,12 @@ class ThemePackageTest extends TestCase
         $currentDesign = 'foo';
 
         $this->assetPathResolver
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('resolveAssetPath')
             ->with($assetPath, $currentDesign)
             ->willReturn($fullAssetPath);
         $this->innerPackage
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('getUrl')
             ->with($fullAssetPath)
             ->willReturn("/$fullAssetPath");
@@ -64,13 +64,13 @@ class ThemePackageTest extends TestCase
         $currentDesign = 'foo';
 
         $this->assetPathResolver
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('resolveAssetPath')
             ->with($assetPath, $currentDesign)
             ->willReturn($fullAssetPath);
         $version = 'v1';
         $this->innerPackage
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('getVersion')
             ->with($fullAssetPath)
             ->willReturn($version);
